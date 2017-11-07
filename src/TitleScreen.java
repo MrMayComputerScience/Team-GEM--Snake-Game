@@ -1,4 +1,3 @@
-package sample;
 import mayflower.World;
 public class TitleScreen extends World
 {

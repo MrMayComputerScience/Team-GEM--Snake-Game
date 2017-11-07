@@ -1,5 +1,3 @@
-package sample;
-
 import mayflower.*;
 
 import mayflower.World;

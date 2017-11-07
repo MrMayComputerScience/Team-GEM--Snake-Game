@@ -1,6 +1,5 @@
-package sample;
 import mayflower.Actor;
-public class SnakeBody extends Actor
+public class wall extends Actor
 {
 
     @Override

@@ -1,5 +1,3 @@
-package sample;
-
 import mayflower.Actor;
 
 public class world extends Actor
