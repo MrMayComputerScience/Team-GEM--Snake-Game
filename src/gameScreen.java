@@ -1,14 +1,13 @@
-package sample;
 import mayflower.World;
 
 public class gameScreen extends World {
     private world map;
-
+    private snake Snake;
     //initilizes the game
-    public gameScreen(world x) {
-
+    public gameScreen(world x, snake s)
+    {
         map = x;
-
+        Snake = s;
     }
 
 
@@ -19,8 +18,6 @@ public class gameScreen extends World {
 
     @Override
     public void act() {
-        //moves kitty/ninja
-
         for (int r = 0; r < map.getHeight(); r++) {
             for (int c = 0; c < map.getWidth(); c++) {
 
@@ -31,6 +28,15 @@ public class gameScreen extends World {
 
 
             }
+        }
+    }
+    public void move()
+    {
+        int x = Snake.getX();
+        int y = Snake.getY();
+        if(Snake.getDirection().equals("North"))
+        {
+
         }
     }
 }

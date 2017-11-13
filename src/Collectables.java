@@ -1,8 +1,6 @@
-package sample;
 import mayflower.Actor;
-public class wall extends Actor
+public class Collectables extends Actor
 {
-
     @Override
     public void act() {
 
