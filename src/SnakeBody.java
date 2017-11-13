@@ -1,18 +1,18 @@
 import mayflower.Actor;
+
 public class SnakeBody extends Actor
 {
-    private int time;
-    public SnakeBody(int x)
+    private int life;
+    public SnakeBody(int size)
     {
-        time = x;
-    }
-    public void time(int x)
-    {
-        time += x;
+        setImage("img/snake.png");
+        life = size;
     }
     @Override
     public void act()
     {
-        time--;
+        life--;
+        if(life <= 0)
+            getWorld().removeObject(this);
     }
 }
