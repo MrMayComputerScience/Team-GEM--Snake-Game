@@ -1,4 +1,4 @@
-package sample;
+
 import mayflower.Actor;
 public class snake extends Actor
 {

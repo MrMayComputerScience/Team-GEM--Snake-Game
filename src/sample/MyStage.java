@@ -12,7 +12,7 @@ public class MyStage extends World
 	
     public MyStage() 
     {
-    	setBackground("src/img/BG/BG.png");
+    	setBackground("H:/TechApps/SnakeGame/Team-GEM--Snake-Game/src/sample/.idea/pictures/background.png");
     	
 
 
