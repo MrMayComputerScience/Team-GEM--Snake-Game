@@ -8,17 +8,19 @@ public class TitleWorld extends World
     public TitleWorld()
     {
         setBackground("img/newSnek.png");
-        Actor singlePlayer = new Label("Single Player");
-
+        Label temp = new Label("Single Player");
+        temp.setColor(Color.CYAN);
+        singlePlayer = new PointActor();
         addObject(singlePlayer,300,400);
-        Label multiplayer = new Label("MultiPlayer");
-        multiplayer.setColor(Color.ORANGE);
+        temp.setColor(Color.CYAN);
+        multiplayer = temp;
         addObject(multiplayer,300,300);
 
     }
 
     public void act()
     {
+
         if(Mayflower.isKeyPressed(Keyboard.KEY_R))
         {
             System.out.println("r");

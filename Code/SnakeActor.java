@@ -20,6 +20,7 @@ public class SnakeActor extends Actor {
     private boolean multi;
     private int Player;
     private boolean canMove;
+    private long testingTime;
     public SnakeActor()
     {
         canMove =true;
@@ -39,6 +40,7 @@ public class SnakeActor extends Actor {
         snakeBodies = new LinkedList<>();
         Player = 1;
         dir=0;
+        testingTime = System.currentTimeMillis();
     }
     public SnakeActor(int player)
     {canMove = false;
@@ -111,8 +113,13 @@ public class SnakeActor extends Actor {
     }
     public void act()
     {
+        //if(toMove.isDone()) {
+            //System.out.println(System.currentTimeMillis() - testingTime);
+            //testingTime = System.currentTimeMillis();
+        //}
             if(!multi)
-                dead();
+                if(checkDead())
+                    dead();
             SnakeBody snakeBody = new SnakeBody(size);
             //movement and directions
         if(canMove) {
@@ -132,6 +139,8 @@ public class SnakeActor extends Actor {
                 snakeBodies.addLast(snakeBody);
                 remove();
                 toMove.reset();
+                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
+                testingTime = System.currentTimeMillis();
             } else if (dir == 2 && toMove.isDone()) {
 
                 setLocation(getX(), getY() + 20);
@@ -139,6 +148,8 @@ public class SnakeActor extends Actor {
                 snakeBodies.addLast(snakeBody);
                 remove();
                 toMove.reset();
+                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
+                testingTime = System.currentTimeMillis();
             } else if (dir == 4 && toMove.isDone()) {
 
                 setLocation(getX() - 20, getY());
@@ -146,13 +157,18 @@ public class SnakeActor extends Actor {
                 snakeBodies.addLast(snakeBody);
                 remove();
                 toMove.reset();
+                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
+                testingTime = System.currentTimeMillis();
             } else if (dir == 6 && toMove.isDone()) {
 
                 setLocation(getX() + 20, getY());
                 add(snakeBody, getX() - 20, getY());
                 snakeBodies.addLast(snakeBody);
                 remove();
-                toMove.reset();
+                toMove.set(75);
+                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
+
+                testingTime = System.currentTimeMillis();
             }
 
             if (this.isTouching(PointActor.class)) {
