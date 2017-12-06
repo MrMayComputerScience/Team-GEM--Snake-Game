@@ -11,7 +11,11 @@ public class SnakeBody extends Actor
         toMove = new Timer(75);
 
 
+        if(TitleWorld.skin == null)
+        {
             setImage("img/snake.png");
+        }
+        else setImage(TitleWorld.img);
             life = size;
 
 
@@ -29,6 +33,11 @@ public class SnakeBody extends Actor
     public int getLife()
     {
         return life;
+    }
+
+    public void snakeImage(String name)
+    {
+        setImage(name);
     }
     @Override
     public void act()

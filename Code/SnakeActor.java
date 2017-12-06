@@ -7,13 +7,13 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
  * Created by s581467 on 11/7/2017.
  */
-public class SnakeActor extends Actor {
+public class SnakeActor extends Actor implements Mover
+{
     private Timer toMove;
     private LinkedList<SnakeBody> snakeBodies;
     private int[] keys;
@@ -33,7 +33,12 @@ public class SnakeActor extends Actor {
         keys[5] = Keyboard.KEY_DOWN;
         keys[6] = Keyboard.KEY_LEFT;
         keys[7] = Keyboard.KEY_RIGHT;
-        setImage("img/snake.png");
+        if(TitleWorld.skin == null)
+        {
+            setImage("img/snake.png");
+        }
+        else setImage(TitleWorld.img);
+
         toMove = new Timer(75);
         size = 0;
         snakeBodies = new LinkedList<>();
@@ -112,6 +117,7 @@ public class SnakeActor extends Actor {
     public void act()
     {
             if(!multi)
+                if(checkDead())
                 dead();
             SnakeBody snakeBody = new SnakeBody(size);
             //movement and directions
@@ -167,10 +173,13 @@ public class SnakeActor extends Actor {
     }
     public boolean checkDead()
     {
-        return this.isTouching(SnakeActor.class)|| this.isTouching(SnakeBody.class) || this.isTouching(WallActor.class);
+        if(this.isTouching(SnakeActor.class)&& SnakeActor.class.equals(MouseActor.class))
+            return false;
+        else return this.isTouching(SnakeActor.class)|| this.isTouching(SnakeBody.class) || this.isTouching(WallActor.class);
     }
 
-    public void setCanMove(boolean canMove) {
+    public void setCanMove(boolean canMove)
+    {
         this.canMove = canMove;
     }
 
@@ -211,10 +220,6 @@ public class SnakeActor extends Actor {
             this.getWorld().removeObject(snakeBodies.get(i));
         }
     }
-    public int getPlayer()
-    {
-        return Player;
-    }
 
     public void dead()
         {
@@ -239,7 +244,7 @@ public class SnakeActor extends Actor {
                 }
                 else
                 {
-                    this.removeTouching(SnakeActor.class);
+                    //this.removeTouching(SnakeActor.class);
                     GameOver over = new GameOver();
                     Mayflower.setWorld(over);
                 }

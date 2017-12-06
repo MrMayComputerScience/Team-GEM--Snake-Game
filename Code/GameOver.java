@@ -16,7 +16,7 @@ public class GameOver extends World
         setBackground("img/gameover.png");
         Label highScore = new Label("press h to view highScores.",20);
         addObject(highScore,300,500);
-        Label whoWins = new Label("Player "+player+" Wins");
+        Label whoWins = new Label("Player "+player+" Loses");
         if(multi)
             addObject(whoWins,300,100);
     }

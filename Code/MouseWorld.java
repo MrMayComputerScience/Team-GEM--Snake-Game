@@ -6,15 +6,15 @@ import java.util.*;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import mayflower.*;
 
-public class SnakeWorld extends World {
+public class MouseWorld extends World {
 
     int[][] board = new int[40][30];
-    private ArrayList<SnakeActor> snakes;
+    private ArrayList<Mover> snakes;
     Boolean multiplayer;
-    public SnakeWorld(boolean m,int players)
+    public MouseWorld(boolean m,int players)
     {
         multiplayer=m;
-        snakes = new ArrayList<SnakeActor>();
+        snakes = new ArrayList<Mover>();
         for(int i=0; i<board.length; i++){
             for(int j=0; j<board[0].length;j++){
                 board[i][j] = 0;
@@ -24,16 +24,16 @@ public class SnakeWorld extends World {
         {
             for(int j = 0;j<board[0].length;j++)
             {
-                    if(i == 0)
+                if(i == 0)
                     board[i][j] = 2;
                         /* if(i == 39)
                         {
                         board[i][j] = 2;
                         }*/
-                    if(i==39)
-                    {
-                        board[i][j] =2;
-                    }
+                if(i==39)
+                {
+                    board[i][j] =2;
+                }
 
             }
         }
@@ -42,22 +42,21 @@ public class SnakeWorld extends World {
             board[i][0]=2;
             board[i][29]=2;
         }
-        SnakeActor snake1 = new SnakeActor(1);
-        SnakeActor snake2 = new SnakeActor(2);
-        SnakeActor snake3 = new SnakeActor(3);
-        SnakeActor snake4 = new SnakeActor(4);
-        SnakeActor snake = new SnakeActor();
-        snakes.add(snake);
-        if(players>1){ snakes.add(snake1);snakes.add(snake2); }
-        if(players>2){ snakes.add(snake3); }
-        if(players>3){ snakes.add(snake4); }
+
+        MouseActor mouse2 = new MouseActor(2);
+        MouseActor mouse3 = new MouseActor(3);
+        MouseActor mouse4 = new MouseActor(4);
+        SnakeActor snake = new SnakeActor(1);
+        if(players>0){ snakes.add(snake);snakes.add(mouse2); }
+        if(players>1){ snakes.add(mouse3); }
+        if(players>2){ snakes.add(mouse4); }
         if(!m) {
             board[1][1] = 1;
 
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
                     if (board[i][j] == 1) {
-                        addObject(snakes.get(0), i * 20, j * 20);
+                        addObject((Actor) snakes.get(0), i * 20, j * 20);
                     }
                     if (board[i][j] == 2) {
                         addObject(new WallActor(), i * 20, j * 20);
@@ -71,14 +70,15 @@ public class SnakeWorld extends World {
             board[1][1] = 1;
 
             board[5][5] = 3;
-            spawn(snakes);
+            spawn((snakes));
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
-                    if (board[i][j] == 1) {
+                    if (board[i][j] == 1)
+                    {
                         //addObject(snakes.get(1), i * 20, j * 20);
                     }
                     if(board[i][j]==3);
-                        //addObject(snakes.get(2),i*20,j*20);
+                    //addObject(snakes.get(2),i*20,j*20);
                     if (board[i][j] == 2) {
                         addObject(new WallActor(), i * 20, j * 20);
                     }
@@ -87,56 +87,34 @@ public class SnakeWorld extends World {
             }
         }
 
-
-
-        List<Actor> obj = getObjects();
-        PointActor point = new PointActor();
-
-       if(!(obj.contains(point)))
-        {
-            board[point.getRow()][point.getCol()] = 3;
-        }
-
-        for(int i=0; i<board.length; i++)
-        {
-            for (int j = 0; j < board[0].length; j++)
-            {
-                if (board[i][j] == 3)
-                {
-                    addObject(point, i * 20, j * 20);
-                }
-            }
-
-        }
     }
-    public void spawn(ArrayList<SnakeActor> list)
+    public void spawn(ArrayList<Mover> list)
     {
-        for(int x =1;x<list.size();x++)
+        for(int x =0;x<list.size();x++)
         {
+            if(x==0)
+                addObject((Actor) list.get(x),20,20);
             if(x==1)
-                addObject(list.get(x),20,20);
+                addObject((Actor) list.get(x),760,20);
             if(x==2)
-                addObject(list.get(x),760,20);
+                addObject((Actor) list.get(x),20,560);
             if(x==3)
-                addObject(list.get(x),20,560);
-            if(x==4)
-                addObject(list.get(x),760,560);
+                addObject((Actor) list.get(x),760,560);
         }
     }
     public void act()
     {
         if(multiplayer) {
-            Boolean done;
             Boolean ready=false;
             for (int i = 1;i<snakes.size();i++ )
             {
                 if(!snakes.get(i).ready())
                     ready = true;
                 else
-                    ready =false;
+                    ready = false;
                 if(snakes.get(i).checkDead()) {
                     snakes.get(i).removeBody();
-                    removeObject(snakes.get(i));
+                    removeObject((Actor)snakes.get(i));
                     snakes.remove(i);
                     i--;
                 }
@@ -150,10 +128,13 @@ public class SnakeWorld extends World {
             {
                 for(int i = 0; i<snakes.size();i++)
                 {
-                    snakes.get(i).setCanMove(true);
+                    if(snakes.get(i).equals(SnakeActor.class))
+                    {
+                        snakes.get(i).setCanMove(true);
+                    }
+
                 }
             }
         }
     }
-
 }
