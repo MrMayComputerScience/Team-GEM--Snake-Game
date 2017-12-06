@@ -91,7 +91,7 @@ public class SnakeWorld extends World {
 
         List<Actor> obj = getObjects();
         PointActor point = new PointActor();
-
+        point.spawn();
        if(!(obj.contains(point)))
         {
             board[point.getRow()][point.getCol()] = 3;
@@ -125,28 +125,47 @@ public class SnakeWorld extends World {
     }
     public void act()
     {
+
+        if(snakes.get(0).ready())
+            snakes.get(0).setCanMove(true);
         if(multiplayer) {
             Boolean done;
             Boolean ready=false;
             for (int i = 1;i<snakes.size();i++ )
             {
-                if(!snakes.get(i).ready())
-                    ready = true;
-                else
-                    ready =false;
-                if(snakes.get(i).checkDead()) {
+
+                if(snakes.get(i).isTouchingSA().size()>0)
+                {
+                    for(int x = 0; x<snakes.get(i).isTouchingSA().size();x++)
+                    {
+                        snakes.remove(snakes.get(i).isTouchingSA().remove(x));
+                    }
                     snakes.get(i).removeBody();
                     removeObject(snakes.get(i));
                     snakes.remove(i);
                     i--;
                 }
-                if(snakes.size()==2) {
-                    snakes.get(1).dead();
-                    snakes.remove(1);
+                else if(snakes.get(i).checkDead()) {
+                    snakes.get(i).removeBody();
+                    removeObject(snakes.get(i));
+                    snakes.remove(i);
+                    i--;
                 }
-                else if(snakes.size()==1)
-                    Mayflower.setWorld(new GameOver(true,snakes.get(0).getPlayer()));
 
+
+            }
+            if(snakes.size()==2) {
+                snakes.get(1).dead();
+                snakes.remove(1);
+            }
+            else if(snakes.size()==1)
+                Mayflower.setWorld(new GameOver(true,"You suck"));
+            ready=true;
+            for(int i =1;i<snakes.size();i++)
+            {
+                if(snakes.get(i).ready())
+                    continue;
+                ready=false;
             }
             if(ready)
             {

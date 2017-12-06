@@ -2,6 +2,7 @@ import mayflower.Actor;
 import mayflower.Keyboard;
 import mayflower.Mayflower;
 import mayflower.Timer;
+import org.lwjgl.Sys;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by s581467 on 11/7/2017.
@@ -23,7 +25,7 @@ public class SnakeActor extends Actor {
     private long testingTime;
     public SnakeActor()
     {
-        canMove =true;
+        canMove =false;
         multi = false;
         keys = new int[8];
         keys[0] = Keyboard.KEY_W;
@@ -40,7 +42,7 @@ public class SnakeActor extends Actor {
         snakeBodies = new LinkedList<>();
         Player = 1;
         dir=0;
-        testingTime = System.currentTimeMillis();
+
     }
     public SnakeActor(int player)
     {canMove = false;
@@ -113,7 +115,14 @@ public class SnakeActor extends Actor {
     }
     public void act()
     {
-        //if(toMove.isDone()) {
+        if(!ready())
+        {
+            setImage("img/wall.png");
+        }
+        else
+            setImage("img/snake.png");
+        //if(toMove.isDone())
+        //{
             //System.out.println(System.currentTimeMillis() - testingTime);
             //testingTime = System.currentTimeMillis();
         //}
@@ -122,7 +131,7 @@ public class SnakeActor extends Actor {
                     dead();
             SnakeBody snakeBody = new SnakeBody(size);
             //movement and directions
-        if(canMove) {
+
             if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2)) {
                 dir = 8;
             } else if ((Mayflower.isKeyPressed(keys[1]) || Mayflower.isKeyPressed(keys[5])) && !(dir == 8)) {
@@ -132,45 +141,41 @@ public class SnakeActor extends Actor {
             } else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4)) {
                 dir = 6;
             }
-        }
-            if (dir == 8 && toMove.isDone()) {
-                setLocation(getX(), getY() - 20);
-                add(snakeBody, getX(), getY() + 20);
-                snakeBodies.addLast(snakeBody);
-                remove();
-                toMove.reset();
-                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
-                testingTime = System.currentTimeMillis();
-            } else if (dir == 2 && toMove.isDone()) {
 
-                setLocation(getX(), getY() + 20);
-                add(snakeBody, getX(), getY() - 20);
-                snakeBodies.addLast(snakeBody);
-                remove();
-                toMove.reset();
-                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
-                testingTime = System.currentTimeMillis();
-            } else if (dir == 4 && toMove.isDone()) {
-
-                setLocation(getX() - 20, getY());
-                add(snakeBody, getX() + 20, getY());
-                snakeBodies.addLast(snakeBody);
-                remove();
-                toMove.reset();
-                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
-                testingTime = System.currentTimeMillis();
-            } else if (dir == 6 && toMove.isDone()) {
-
-                setLocation(getX() + 20, getY());
-                add(snakeBody, getX() - 20, getY());
-                snakeBodies.addLast(snakeBody);
-                remove();
-                toMove.set(75);
-                toMove.adjust((int)(System.currentTimeMillis() - testingTime));
-
-                testingTime = System.currentTimeMillis();
+            if(canMove) {
+                if (dir == 8 && toMove.isDone()) {
+                    setLocation(getX(), getY() - 20);
+                    add(snakeBody, getX(), getY() + 20);
+                    snakeBodies.addLast(snakeBody);
+                    remove();
+                    toMove.set(75 + (int) (System.currentTimeMillis() - testingTime));
+                    testingTime = System.currentTimeMillis();
+                } else if (dir == 2 && toMove.isDone()) {
+                    setLocation(getX(), getY() + 20);
+                    add(snakeBody, getX(), getY() - 20);
+                    snakeBodies.addLast(snakeBody);
+                    remove();
+                    toMove.set(75 + (int) (System.currentTimeMillis() - testingTime));
+                    toMove.set(75);
+                    toMove.adjust((int) (System.currentTimeMillis() - testingTime));
+                    testingTime = System.currentTimeMillis();
+                } else if (dir == 4 && toMove.isDone()) {
+                    setLocation(getX() - 20, getY());
+                    add(snakeBody, getX() + 20, getY());
+                    snakeBodies.addLast(snakeBody);
+                    remove();
+                    toMove.set(75 + (int) (System.currentTimeMillis() - testingTime));
+                    testingTime = System.currentTimeMillis();
+                } else if (dir == 6 && toMove.isDone()) {
+                    setLocation(getX() + 20, getY());
+                    add(snakeBody, getX() - 20, getY());
+                    snakeBodies.addLast(snakeBody);
+                    remove();
+                    toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
+                    System.out.println(toMove.getTimeLeft());
+                    testingTime = testingTime+75;
+                }
             }
-
             if (this.isTouching(PointActor.class)) {
                 this.removeTouching(PointActor.class);
                 PointActor pointActor = new PointActor();
@@ -179,7 +184,6 @@ public class SnakeActor extends Actor {
                 score++;
                 add();
             }
-
     }
     public boolean checkDead()
     {
@@ -188,6 +192,7 @@ public class SnakeActor extends Actor {
 
     public void setCanMove(boolean canMove) {
         this.canMove = canMove;
+        testingTime = System.currentTimeMillis();
     }
 
     public boolean add(Actor actor, int x, int y)
@@ -264,4 +269,14 @@ public class SnakeActor extends Actor {
 
 
         }
+    public boolean isIntersecting()
+    {
+        if(this.isTouching(SnakeActor.class))
+            return true;
+        return false;
+    }
+    public List<SnakeActor> isTouchingSA()
+    {
+        return this.getIntersectingObjects(SnakeActor.class);
+    }
 }

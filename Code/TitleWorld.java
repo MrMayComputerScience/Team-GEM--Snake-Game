@@ -10,7 +10,7 @@ public class TitleWorld extends World
         setBackground("img/newSnek.png");
         Label temp = new Label("Single Player");
         temp.setColor(Color.CYAN);
-        singlePlayer = new PointActor();
+        //singlePlayer = new PointActor();
         addObject(singlePlayer,300,400);
         temp.setColor(Color.CYAN);
         multiplayer = temp;

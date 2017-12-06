@@ -20,6 +20,15 @@ public class GameOver extends World
         if(multi)
             addObject(whoWins,300,100);
     }
+    public GameOver(boolean multi,String message)
+    {
+        setBackground("img/gameover.png");
+        Label highScore = new Label("press h to view highScores.",20);
+        addObject(highScore,300,500);
+        Label whoWins = new Label(message);
+        if(multi)
+            addObject(whoWins,300,100);
+    }
     public void act()
     {
         if(Mayflower.isKeyPressed(Keyboard.KEY_R))
