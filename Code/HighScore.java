@@ -7,9 +7,14 @@ import java.util.Comparator;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class HighScore extends World {
-    public HighScore()
+public class HighScore extends World
+{
+    private Properties properties;
+
+    public HighScore(Properties p)
     {
+        properties = p;
+
         RainbowLabel highScores = new RainbowLabel("HighScores",40);
         addObject(highScores,300,25);
         Label title = new Label("Press t to return to title page.",40);
@@ -55,7 +60,7 @@ public class HighScore extends World {
         if(Mayflower.isKeyPressed(Keyboard.KEY_T))
         {
             System.out.println("t");
-            Mayflower.setWorld(new TitleWorld());
+            Mayflower.setWorld(new TitleWorld(properties));
         }
     }
 }

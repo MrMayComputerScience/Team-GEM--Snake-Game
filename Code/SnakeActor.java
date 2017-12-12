@@ -23,8 +23,15 @@ public class SnakeActor extends Actor {
     private int Player;
     private boolean canMove;
     private long testingTime;
-    public SnakeActor()
+
+    private String mode;
+    private Properties properties;
+
+    public SnakeActor(Properties p)
     {
+        properties = p;
+        mode = properties.getMode();
+
         canMove =false;
         multi = false;
         keys = new int[8];
@@ -44,9 +51,22 @@ public class SnakeActor extends Actor {
         dir=0;
 
     }
-    public SnakeActor(int player)
-    {canMove = false;
-        multi = true;
+    public SnakeActor(Properties p, int pl)
+    {
+        //The snakes can't move at the start
+        canMove = false;
+
+        //Gets the mode of play
+        properties = p;
+        mode = properties.getMode();
+
+        //Gets the number of players, and thus the multiplayer boolean
+        int player = pl;
+        multi = Integer.parseInt(properties.getPlayers()) > 1;
+
+        //Gets the mode
+        mode = properties.getMode();
+
         keys = new int[8];
         if(player==1)
         {
@@ -96,12 +116,14 @@ public class SnakeActor extends Actor {
             keys[7] = Keyboard.KEY_H;
             Player = 4;
         }
+
         setImage("img/snake.png");
         toMove = new Timer(75);
         size = 0;
         snakeBodies = new LinkedList<>();
         dir=0;
     }
+
     private int score;
     private String name;
     private int dir; // 8 is up, 2 is down , 4 is left, 6 is right
@@ -113,6 +135,9 @@ public class SnakeActor extends Actor {
             return false;
         return true;
     }
+
+    int countResets = 0;
+
     public void act()
     {
         if(!ready())
@@ -150,6 +175,7 @@ public class SnakeActor extends Actor {
                     remove();
                     toMove.set(75 + (int) (System.currentTimeMillis() - testingTime));
                     testingTime = System.currentTimeMillis();
+                    countResets++;
                 } else if (dir == 2 && toMove.isDone()) {
                     setLocation(getX(), getY() + 20);
                     add(snakeBody, getX(), getY() - 20);
@@ -159,6 +185,7 @@ public class SnakeActor extends Actor {
                     toMove.set(75);
                     toMove.adjust((int) (System.currentTimeMillis() - testingTime));
                     testingTime = System.currentTimeMillis();
+                    countResets++;
                 } else if (dir == 4 && toMove.isDone()) {
                     setLocation(getX() - 20, getY());
                     add(snakeBody, getX() + 20, getY());
@@ -166,6 +193,7 @@ public class SnakeActor extends Actor {
                     remove();
                     toMove.set(75 + (int) (System.currentTimeMillis() - testingTime));
                     testingTime = System.currentTimeMillis();
+                    countResets++;
                 } else if (dir == 6 && toMove.isDone()) {
                     setLocation(getX() + 20, getY());
                     add(snakeBody, getX() - 20, getY());
@@ -174,15 +202,28 @@ public class SnakeActor extends Actor {
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     System.out.println(toMove.getTimeLeft());
                     testingTime = testingTime+75;
+                    countResets++;
                 }
             }
-            if (this.isTouching(PointActor.class)) {
-                this.removeTouching(PointActor.class);
-                PointActor pointActor = new PointActor();
-                getWorld().addObject(pointActor, pointActor.getRow() * 20, pointActor.getCol() * 20);
+
+            if(mode.equals("B"))
+            {
+                if (this.isTouching(PointActor.class))
+                {
+                    this.removeTouching(PointActor.class);
+                    PointActor pointActor = new PointActor();
+                    getWorld().addObject(pointActor, pointActor.getRow() * 20, pointActor.getCol() * 20);
+                    size++;
+                    score++;
+                    add();
+                }
+            }
+            if(mode.equals("A") && countResets >= 1)
+            {
                 size++;
                 score++;
                 add();
+                countResets = 0;
             }
     }
     public boolean checkDead()
@@ -221,10 +262,12 @@ public class SnakeActor extends Actor {
             snakeBodies.get(x).setLife(snakeBodies.get(x).getLife()+1);
         }
     }
+
     public int getPoints()
     {
         return score;
     }
+
     public void removeBody()
     {
         for(int i = 0;i<snakeBodies.size();i++)
@@ -232,6 +275,7 @@ public class SnakeActor extends Actor {
             this.getWorld().removeObject(snakeBodies.get(i));
         }
     }
+
     public int getPlayer()
     {
         return Player;
@@ -255,13 +299,15 @@ public class SnakeActor extends Actor {
                 if(multi)
                 {
                     this.removeTouching(SnakeActor.class);
-                    GameOver over = new GameOver(true,Player);
+                    //GameOver over = new GameOver(true,Player);
+                    GameOver over = new GameOver(properties);
                     Mayflower.setWorld(over);
                 }
                 else
                 {
                     this.removeTouching(SnakeActor.class);
-                    GameOver over = new GameOver();
+                    //GameOver over = new GameOver();
+                    GameOver over = new GameOver(properties);
                     Mayflower.setWorld(over);
                 }
 
@@ -275,6 +321,7 @@ public class SnakeActor extends Actor {
             return true;
         return false;
     }
+
     public List<SnakeActor> isTouchingSA()
     {
         return this.getIntersectingObjects(SnakeActor.class);

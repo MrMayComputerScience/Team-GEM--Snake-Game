@@ -3,7 +3,8 @@ import mayflower.*;
 
 public class Runner extends Mayflower
 {
-    public Runner(){
+    public Runner()
+    {
         super("Snek", 800, 600);
     }
 
@@ -11,11 +12,12 @@ public class Runner extends Mayflower
     {
         //Mayflower.setFullScreen(true);
 
-        World startingWorld = new TitleWorld();
+        World startingWorld = new TitleWorld(new Properties());
         Mayflower.setWorld(startingWorld);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         new Runner();
     }
 }
