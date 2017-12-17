@@ -115,17 +115,17 @@
       <file leaf-file-name="SnakeActor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+            <state relative-caret-position="1083">
+              <caret line="396" column="40" lean-forward="false" selection-start-line="396" selection-start-column="31" selection-end-line="396" selection-end-column="40" />
               <folding>
-                <element signature="e#17122#17123#0" expanded="true" />
-                <element signature="e#17184#17185#0" expanded="true" />
-                <element signature="e#17808#17809#0" expanded="true" />
-                <element signature="e#17836#17837#0" expanded="true" />
-                <element signature="e#18042#18043#0" expanded="true" />
-                <element signature="e#18071#18072#0" expanded="true" />
-                <element signature="e#19605#19606#0" expanded="true" />
-                <element signature="e#19632#19633#0" expanded="true" />
+                <element signature="e#17002#17003#0" expanded="true" />
+                <element signature="e#17064#17065#0" expanded="true" />
+                <element signature="e#17688#17689#0" expanded="true" />
+                <element signature="e#17716#17717#0" expanded="true" />
+                <element signature="e#17922#17923#0" expanded="true" />
+                <element signature="e#17951#17952#0" expanded="true" />
+                <element signature="e#19485#19486#0" expanded="true" />
+                <element signature="e#19512#19513#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,7 +158,12 @@
       <find>remove</find>
       <find>remove()</find>
       <find>move()</find>
+      <find>isKeyPressed</find>
+      <find>isKeyDown</find>
     </findStrings>
+    <replaceStrings>
+      <replace>isKeyDown</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -523,6 +528,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13697916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -553,7 +559,6 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10520833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout>
@@ -674,14 +679,14 @@
         <state relative-caret-position="544">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="e#17122#17123#0" expanded="true" />
-            <element signature="e#17184#17185#0" expanded="true" />
-            <element signature="e#17808#17809#0" expanded="true" />
-            <element signature="e#17836#17837#0" expanded="true" />
-            <element signature="e#18042#18043#0" expanded="true" />
-            <element signature="e#18071#18072#0" expanded="true" />
-            <element signature="e#19605#19606#0" expanded="true" />
-            <element signature="e#19632#19633#0" expanded="true" />
+            <element signature="e#17002#17003#0" expanded="true" />
+            <element signature="e#17064#17065#0" expanded="true" />
+            <element signature="e#17688#17689#0" expanded="true" />
+            <element signature="e#17716#17717#0" expanded="true" />
+            <element signature="e#17922#17923#0" expanded="true" />
+            <element signature="e#17951#17952#0" expanded="true" />
+            <element signature="e#19485#19486#0" expanded="true" />
+            <element signature="e#19512#19513#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -713,14 +718,14 @@
         <state relative-caret-position="544">
           <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="e#17122#17123#0" expanded="true" />
-            <element signature="e#17184#17185#0" expanded="true" />
-            <element signature="e#17808#17809#0" expanded="true" />
-            <element signature="e#17836#17837#0" expanded="true" />
-            <element signature="e#18042#18043#0" expanded="true" />
-            <element signature="e#18071#18072#0" expanded="true" />
-            <element signature="e#19605#19606#0" expanded="true" />
-            <element signature="e#19632#19633#0" expanded="true" />
+            <element signature="e#17002#17003#0" expanded="true" />
+            <element signature="e#17064#17065#0" expanded="true" />
+            <element signature="e#17688#17689#0" expanded="true" />
+            <element signature="e#17716#17717#0" expanded="true" />
+            <element signature="e#17922#17923#0" expanded="true" />
+            <element signature="e#17951#17952#0" expanded="true" />
+            <element signature="e#19485#19486#0" expanded="true" />
+            <element signature="e#19512#19513#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -900,17 +905,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+        <state relative-caret-position="1083">
+          <caret line="396" column="40" lean-forward="false" selection-start-line="396" selection-start-column="31" selection-end-line="396" selection-end-column="40" />
           <folding>
-            <element signature="e#17122#17123#0" expanded="true" />
-            <element signature="e#17184#17185#0" expanded="true" />
-            <element signature="e#17808#17809#0" expanded="true" />
-            <element signature="e#17836#17837#0" expanded="true" />
-            <element signature="e#18042#18043#0" expanded="true" />
-            <element signature="e#18071#18072#0" expanded="true" />
-            <element signature="e#19605#19606#0" expanded="true" />
-            <element signature="e#19632#19633#0" expanded="true" />
+            <element signature="e#17002#17003#0" expanded="true" />
+            <element signature="e#17064#17065#0" expanded="true" />
+            <element signature="e#17688#17689#0" expanded="true" />
+            <element signature="e#17716#17717#0" expanded="true" />
+            <element signature="e#17922#17923#0" expanded="true" />
+            <element signature="e#17951#17952#0" expanded="true" />
+            <element signature="e#19485#19486#0" expanded="true" />
+            <element signature="e#19512#19513#0" expanded="true" />
           </folding>
         </state>
       </provider>

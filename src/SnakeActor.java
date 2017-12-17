@@ -394,19 +394,19 @@ public class SnakeActor extends Actor implements Mover{
             //If there is one player...
             if( Integer.parseInt( properties.getPlayers() ) == 1 )
             {
-                if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
+                if ((Mayflower.isKeyDown(keys[0])) && !(dir == 2))
                 {
                     dir = 8;
                 }
-                else if ((Mayflower.isKeyPressed(keys[1])) && !(dir == 8))
+                else if ((Mayflower.isKeyDown(keys[1])) && !(dir == 8))
                 {
                     dir = 2;
                 }
-                else if ((Mayflower.isKeyPressed(keys[2])) && !(dir == 6))
+                else if ((Mayflower.isKeyDown(keys[2])) && !(dir == 6))
                 {
                     dir = 4;
                 }
-                else if ((Mayflower.isKeyPressed(keys[3])) && !(dir == 4))
+                else if ((Mayflower.isKeyDown(keys[3])) && !(dir == 4))
                 {
                     dir = 6;
                 }
@@ -416,23 +416,23 @@ public class SnakeActor extends Actor implements Mover{
             //If there are two players...
             if( Integer.parseInt( properties.getPlayers() ) == 2 )
             {
-                if ((Mayflower.isKeyPressed(keys[0]) &&
-                        Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
+                if ((Mayflower.isKeyDown(keys[0]) &&
+                        Mayflower.isKeyDown(keys[4])) && !(dir == 2))
                 {
                     dir = 8;
                 }
-                else if ((Mayflower.isKeyPressed(keys[1]) &&
-                        Mayflower.isKeyPressed(keys[5])) && !(dir == 8))
+                else if ((Mayflower.isKeyDown(keys[1]) &&
+                        Mayflower.isKeyDown(keys[5])) && !(dir == 8))
                 {
                     dir = 2;
                 }
-                else if ((Mayflower.isKeyPressed(keys[2]) &&
-                        Mayflower.isKeyPressed(keys[6])) && !(dir == 6))
+                else if ((Mayflower.isKeyDown(keys[2]) &&
+                        Mayflower.isKeyDown(keys[6])) && !(dir == 6))
                 {
                     dir = 4;
                 }
-                else if ((Mayflower.isKeyPressed(keys[3]) &&
-                        Mayflower.isKeyPressed(keys[7])) && !(dir == 4))
+                else if ((Mayflower.isKeyDown(keys[3]) &&
+                        Mayflower.isKeyDown(keys[7])) && !(dir == 4))
                 {
                     dir = 6;
                 }
@@ -442,27 +442,27 @@ public class SnakeActor extends Actor implements Mover{
             //If there are three players...
             if( Integer.parseInt( properties.getPlayers() ) == 3 )
             {
-                if ((Mayflower.isKeyPressed(keys[0]) &&
-                        Mayflower.isKeyPressed(keys[4]) &&
-                        Mayflower.isKeyPressed(keys[8])) && !(dir == 2))
+                if ((Mayflower.isKeyDown(keys[0]) &&
+                        Mayflower.isKeyDown(keys[4]) &&
+                        Mayflower.isKeyDown(keys[8])) && !(dir == 2))
                 {
                     dir = 8;
                 }
-                else if ((Mayflower.isKeyPressed(keys[1]) &&
-                        Mayflower.isKeyPressed(keys[5]) &&
-                        Mayflower.isKeyPressed(keys[9])) && !(dir == 8))
+                else if ((Mayflower.isKeyDown(keys[1]) &&
+                        Mayflower.isKeyDown(keys[5]) &&
+                        Mayflower.isKeyDown(keys[9])) && !(dir == 8))
                 {
                     dir = 2;
                 }
-                else if ((Mayflower.isKeyPressed(keys[2]) &&
-                        Mayflower.isKeyPressed(keys[6]) &&
-                        Mayflower.isKeyPressed(keys[10])) && !(dir == 6))
+                else if ((Mayflower.isKeyDown(keys[2]) &&
+                        Mayflower.isKeyDown(keys[6]) &&
+                        Mayflower.isKeyDown(keys[10])) && !(dir == 6))
                 {
                     dir = 4;
                 }
-                else if ((Mayflower.isKeyPressed(keys[3]) &&
-                        Mayflower.isKeyPressed(keys[7]) &&
-                        Mayflower.isKeyPressed(keys[11])) && !(dir == 4))
+                else if ((Mayflower.isKeyDown(keys[3]) &&
+                        Mayflower.isKeyDown(keys[7]) &&
+                        Mayflower.isKeyDown(keys[11])) && !(dir == 4))
                 {
                     dir = 6;
                 }
@@ -472,31 +472,31 @@ public class SnakeActor extends Actor implements Mover{
             //If there are four players...
             if( Integer.parseInt( properties.getPlayers() ) == 4 )
             {
-                if ((Mayflower.isKeyPressed(keys[0]) &&
-                        Mayflower.isKeyPressed(keys[4]) &&
-                        Mayflower.isKeyPressed(keys[8]) &&
-                        Mayflower.isKeyPressed(keys[12])) && !(dir == 2))
+                if ((Mayflower.isKeyDown(keys[0]) &&
+                        Mayflower.isKeyDown(keys[4]) &&
+                        Mayflower.isKeyDown(keys[8]) &&
+                        Mayflower.isKeyDown(keys[12])) && !(dir == 2))
                 {
                     dir = 8;
                 }
-                else if ((Mayflower.isKeyPressed(keys[1]) &&
-                        Mayflower.isKeyPressed(keys[5]) &&
-                        Mayflower.isKeyPressed(keys[9]) &&
-                        Mayflower.isKeyPressed(keys[13])) && !(dir == 8))
+                else if ((Mayflower.isKeyDown(keys[1]) &&
+                        Mayflower.isKeyDown(keys[5]) &&
+                        Mayflower.isKeyDown(keys[9]) &&
+                        Mayflower.isKeyDown(keys[13])) && !(dir == 8))
                 {
                     dir = 2;
                 }
-                else if ((Mayflower.isKeyPressed(keys[2]) &&
-                        Mayflower.isKeyPressed(keys[6]) &&
-                        Mayflower.isKeyPressed(keys[10]) &&
-                        Mayflower.isKeyPressed(keys[14])) && !(dir == 6))
+                else if ((Mayflower.isKeyDown(keys[2]) &&
+                        Mayflower.isKeyDown(keys[6]) &&
+                        Mayflower.isKeyDown(keys[10]) &&
+                        Mayflower.isKeyDown(keys[14])) && !(dir == 6))
                 {
                     dir = 4;
                 }
-                else if ((Mayflower.isKeyPressed(keys[3]) &&
-                        Mayflower.isKeyPressed(keys[7]) &&
-                        Mayflower.isKeyPressed(keys[11]) &&
-                        Mayflower.isKeyPressed(keys[15])) && !(dir == 4))
+                else if ((Mayflower.isKeyDown(keys[3]) &&
+                        Mayflower.isKeyDown(keys[7]) &&
+                        Mayflower.isKeyDown(keys[11]) &&
+                        Mayflower.isKeyDown(keys[15])) && !(dir == 4))
                 {
                     dir = 6;
                 }
