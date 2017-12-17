@@ -10,12 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6fd2bb6-687a-4b4c-97fc-80c5b4c05814" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Eli.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Eli.xml" />
       <change beforePath="$PROJECT_DIR$/score.txt" afterPath="$PROJECT_DIR$/score.txt" />
-      <change beforePath="$PROJECT_DIR$/src/HighScore.java" afterPath="$PROJECT_DIR$/src/HighScore.java" />
       <change beforePath="$PROJECT_DIR$/src/SnakeActor.java" afterPath="$PROJECT_DIR$/src/SnakeActor.java" />
       <change beforePath="$PROJECT_DIR$/src/SnakeWorld.java" afterPath="$PROJECT_DIR$/src/SnakeWorld.java" />
-      <change beforePath="$PROJECT_DIR$/src/TitleWorld.java" afterPath="$PROJECT_DIR$/src/TitleWorld.java" />
-      <change beforePath="$PROJECT_DIR$/src/TwitchSnake.java" afterPath="$PROJECT_DIR$/src/TwitchSnake.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,20 +68,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SnakeWorld.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SnakeWorld.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="131" column="28" lean-forward="true" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4769#4770#0" expanded="true" />
-                <element signature="e#4801#4802#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GameOver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameOver.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,26 +100,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SnakeActor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
+      <file leaf-file-name="SnakeWorld.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SnakeWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-695">
-              <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+            <state relative-caret-position="2650">
+              <caret line="201" column="78" lean-forward="true" selection-start-line="201" selection-start-column="78" selection-end-line="201" selection-end-column="78" />
               <folding>
-                <element signature="e#10180#10181#0" expanded="true" />
-                <element signature="e#10242#10243#0" expanded="true" />
-                <element signature="e#10866#10867#0" expanded="true" />
-                <element signature="e#10894#10895#0" expanded="true" />
-                <element signature="e#11100#11101#0" expanded="true" />
-                <element signature="e#11129#11130#0" expanded="true" />
-                <element signature="e#12663#12664#0" expanded="true" />
-                <element signature="e#12690#12691#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#4823#4824#0" expanded="true" />
+                <element signature="e#4855#4856#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitchSnake.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SnakeActor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3487">
+              <caret line="334" column="24" lean-forward="false" selection-start-line="334" selection-start-column="24" selection-end-line="334" selection-end-column="24" />
+              <folding>
+                <element signature="e#16976#16977#0" expanded="true" />
+                <element signature="e#17038#17039#0" expanded="true" />
+                <element signature="e#17662#17663#0" expanded="true" />
+                <element signature="e#17690#17691#0" expanded="true" />
+                <element signature="e#17896#17897#0" expanded="true" />
+                <element signature="e#17925#17926#0" expanded="true" />
+                <element signature="e#19459#19460#0" expanded="true" />
+                <element signature="e#19486#19487#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwitchSnake.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TwitchSnake.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="202">
@@ -161,6 +159,7 @@
       <find>score</find>
       <find>remove</find>
       <find>remove()</find>
+      <find>move()</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -196,9 +195,9 @@
         <option value="$PROJECT_DIR$/score.txt" />
         <option value="$PROJECT_DIR$/src/HighScore.java" />
         <option value="$PROJECT_DIR$/src/TitleWorld.java" />
+        <option value="$PROJECT_DIR$/src/TwitchSnake.java" />
         <option value="$PROJECT_DIR$/src/SnakeWorld.java" />
         <option value="$PROJECT_DIR$/src/SnakeActor.java" />
-        <option value="$PROJECT_DIR$/src/TwitchSnake.java" />
       </list>
     </option>
   </component>
@@ -604,7 +603,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SnakeActor.java</url>
-          <line>405</line>
+          <line>612</line>
           <properties />
           <option name="timeStamp" value="315" />
         </line-breakpoint>
@@ -628,8 +627,8 @@
           <caret line="57" column="10" lean-forward="false" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4769#4770#0" expanded="true" />
-            <element signature="e#4801#4802#0" expanded="true" />
+            <element signature="e#4823#4824#0" expanded="true" />
+            <element signature="e#4855#4856#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -677,14 +676,14 @@
         <state relative-caret-position="544">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="e#10180#10181#0" expanded="true" />
-            <element signature="e#10242#10243#0" expanded="true" />
-            <element signature="e#10866#10867#0" expanded="true" />
-            <element signature="e#10894#10895#0" expanded="true" />
-            <element signature="e#11100#11101#0" expanded="true" />
-            <element signature="e#11129#11130#0" expanded="true" />
-            <element signature="e#12663#12664#0" expanded="true" />
-            <element signature="e#12690#12691#0" expanded="true" />
+            <element signature="e#16976#16977#0" expanded="true" />
+            <element signature="e#17038#17039#0" expanded="true" />
+            <element signature="e#17662#17663#0" expanded="true" />
+            <element signature="e#17690#17691#0" expanded="true" />
+            <element signature="e#17896#17897#0" expanded="true" />
+            <element signature="e#17925#17926#0" expanded="true" />
+            <element signature="e#19459#19460#0" expanded="true" />
+            <element signature="e#19486#19487#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -695,8 +694,8 @@
           <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4769#4770#0" expanded="true" />
-            <element signature="e#4801#4802#0" expanded="true" />
+            <element signature="e#4823#4824#0" expanded="true" />
+            <element signature="e#4855#4856#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -716,14 +715,14 @@
         <state relative-caret-position="544">
           <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="e#10180#10181#0" expanded="true" />
-            <element signature="e#10242#10243#0" expanded="true" />
-            <element signature="e#10866#10867#0" expanded="true" />
-            <element signature="e#10894#10895#0" expanded="true" />
-            <element signature="e#11100#11101#0" expanded="true" />
-            <element signature="e#11129#11130#0" expanded="true" />
-            <element signature="e#12663#12664#0" expanded="true" />
-            <element signature="e#12690#12691#0" expanded="true" />
+            <element signature="e#16976#16977#0" expanded="true" />
+            <element signature="e#17038#17039#0" expanded="true" />
+            <element signature="e#17662#17663#0" expanded="true" />
+            <element signature="e#17690#17691#0" expanded="true" />
+            <element signature="e#17896#17897#0" expanded="true" />
+            <element signature="e#17925#17926#0" expanded="true" />
+            <element signature="e#19459#19460#0" expanded="true" />
+            <element signature="e#19486#19487#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -734,8 +733,8 @@
           <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4769#4770#0" expanded="true" />
-            <element signature="e#4801#4802#0" expanded="true" />
+            <element signature="e#4823#4824#0" expanded="true" />
+            <element signature="e#4855#4856#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -821,14 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/score.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameOver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="491">
@@ -873,18 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SnakeWorld.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="131" column="28" lean-forward="true" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4769#4770#0" expanded="true" />
-            <element signature="e#4801#4802#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TitleWorld.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -893,28 +872,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-695">
-          <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
-          <folding>
-            <element signature="e#10180#10181#0" expanded="true" />
-            <element signature="e#10242#10243#0" expanded="true" />
-            <element signature="e#10866#10867#0" expanded="true" />
-            <element signature="e#10894#10895#0" expanded="true" />
-            <element signature="e#11100#11101#0" expanded="true" />
-            <element signature="e#11129#11130#0" expanded="true" />
-            <element signature="e#12663#12664#0" expanded="true" />
-            <element signature="e#12690#12691#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TwitchSnake.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/score.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SnakeWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2650">
+          <caret line="201" column="78" lean-forward="true" selection-start-line="201" selection-start-column="78" selection-end-line="201" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4823#4824#0" expanded="true" />
+            <element signature="e#4855#4856#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3487">
+          <caret line="334" column="24" lean-forward="false" selection-start-line="334" selection-start-column="24" selection-end-line="334" selection-end-column="24" />
+          <folding>
+            <element signature="e#16976#16977#0" expanded="true" />
+            <element signature="e#17038#17039#0" expanded="true" />
+            <element signature="e#17662#17663#0" expanded="true" />
+            <element signature="e#17690#17691#0" expanded="true" />
+            <element signature="e#17896#17897#0" expanded="true" />
+            <element signature="e#17925#17926#0" expanded="true" />
+            <element signature="e#19459#19460#0" expanded="true" />
+            <element signature="e#19486#19487#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

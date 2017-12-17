@@ -2,6 +2,8 @@
   <dictionary name="Eli">
     <words>
       <w>highscore</w>
+      <w>multiplayer</w>
+      <w>singleplayer</w>
     </words>
   </dictionary>
 </component>

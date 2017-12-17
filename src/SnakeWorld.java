@@ -131,7 +131,8 @@ public class SnakeWorld extends World {
         }
         if(mode.equals("T"))
         {
-            snakes.add(new TwitchSnake(properties));
+            //snakes.add(new TwitchSnake(properties));
+            snakes.add(new SnakeActor(properties));
         }
     }
 

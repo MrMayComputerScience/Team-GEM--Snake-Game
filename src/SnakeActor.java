@@ -157,13 +157,20 @@ public class SnakeActor extends Actor implements Mover{
             SnakeBody snakeBody = new SnakeBody(size);
             //movement and directions
 
-            if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2)) {
+            if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
+            {
                 dir = 8;
-            } else if ((Mayflower.isKeyPressed(keys[1]) || Mayflower.isKeyPressed(keys[5])) && !(dir == 8)) {
+            }
+            else if ((Mayflower.isKeyPressed(keys[1]) || Mayflower.isKeyPressed(keys[5])) && !(dir == 8))
+            {
                 dir = 2;
-            } else if ((Mayflower.isKeyPressed(keys[2]) || Mayflower.isKeyPressed(keys[6])) && !(dir == 6)) {
+            }
+            else if ((Mayflower.isKeyPressed(keys[2]) || Mayflower.isKeyPressed(keys[6])) && !(dir == 6))
+            {
                 dir = 4;
-            } else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4)) {
+            }
+            else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4))
+            {
                 dir = 6;
             }
 
@@ -210,7 +217,7 @@ public class SnakeActor extends Actor implements Mover{
 
     public void mode()
     {
-        if(mode.equals("B"))
+        if(mode.equals("B") || mode.equals("T"))
         {
             if (this.isTouching(PointActor.class))
             {
@@ -231,60 +238,260 @@ public class SnakeActor extends Actor implements Mover{
 
     }
 
-    public void moveMode(int player)
+    /*
+        TODO:
+        Implement moveMode into the program
+    */
+
+    public void keyMode(int player)
     {
-        if(mode.equals("B") || mode.equals("A"))
+        //Sets the controls for BC mode and AG mode - singleplayer
+        if((mode.equals("B") || mode.equals("A")) && !multi)
         {
             keys = new int[8];
+            keys[0] = Keyboard.KEY_W;
+            keys[1] = Keyboard.KEY_S;
+            keys[2] = Keyboard.KEY_A;
+            keys[3] = Keyboard.KEY_D;
+            keys[4] = Keyboard.KEY_UP;
+            keys[5] = Keyboard.KEY_DOWN;
+            keys[6] = Keyboard.KEY_LEFT;
+            keys[7] = Keyboard.KEY_RIGHT;
+            Player = 1;
+        }
+
+        //Sets the controls for BC mode and AG mode - multiplayer
+        if((mode.equals("B") || mode.equals("A")) && multi)
+        {
             if(player==1)
             {
+                keys = new int[4];
                 keys[0] = Keyboard.KEY_W;
                 keys[1] = Keyboard.KEY_S;
                 keys[2] = Keyboard.KEY_A;
                 keys[3] = Keyboard.KEY_D;
-                keys[4] = Keyboard.KEY_W;
-                keys[5] = Keyboard.KEY_S;
-                keys[6] = Keyboard.KEY_A;
-                keys[7] = Keyboard.KEY_D;
                 Player = 1;
             }
             if(player==2)
             {
+                keys = new int[4];
                 keys[0] = Keyboard.KEY_UP;
                 keys[1] = Keyboard.KEY_DOWN;
                 keys[2] = Keyboard.KEY_LEFT;
                 keys[3] = Keyboard.KEY_RIGHT;
-                keys[4] = Keyboard.KEY_UP;
-                keys[5] = Keyboard.KEY_DOWN;
-                keys[6] = Keyboard.KEY_LEFT;
-                keys[7] = Keyboard.KEY_RIGHT;
                 Player = 2;
             }
             if(player==3)
             {
+                keys = new int[4];
                 keys[0] = Keyboard.KEY_I;
                 keys[1] = Keyboard.KEY_K;
                 keys[2] = Keyboard.KEY_J;
                 keys[3] = Keyboard.KEY_L;
-                keys[4] = Keyboard.KEY_I;
-                keys[5] = Keyboard.KEY_K;
-                keys[6] = Keyboard.KEY_J;
-                keys[7] = Keyboard.KEY_L;
                 Player = 3;
             }
             if(player==4)
             {
+                keys = new int[4];
                 keys[0] = Keyboard.KEY_T;
                 keys[1] = Keyboard.KEY_G;
                 keys[2] = Keyboard.KEY_F;
                 keys[3] = Keyboard.KEY_H;
-                keys[4] = Keyboard.KEY_T;
-                keys[5] = Keyboard.KEY_G;
-                keys[6] = Keyboard.KEY_F;
-                keys[7] = Keyboard.KEY_H;
                 Player = 4;
             }
         }
+
+        //Sets the controls for Twitch Play mode
+        if(mode.equals("T"))
+        {
+            keys = new int[16];
+            keys[0] = Keyboard.KEY_W;
+            keys[1] = Keyboard.KEY_S;
+            keys[2] = Keyboard.KEY_A;
+            keys[3] = Keyboard.KEY_D;
+            keys[4] = Keyboard.KEY_UP;
+            keys[5] = Keyboard.KEY_DOWN;
+            keys[6] = Keyboard.KEY_LEFT;
+            keys[7] = Keyboard.KEY_RIGHT;
+            keys[8] = Keyboard.KEY_I;
+            keys[9] = Keyboard.KEY_K;
+            keys[10] = Keyboard.KEY_J;
+            keys[11] = Keyboard.KEY_L;
+            keys[12] = Keyboard.KEY_T;
+            keys[13] = Keyboard.KEY_G;
+            keys[14] = Keyboard.KEY_F;
+            keys[15] = Keyboard.KEY_H;
+            Player = 1;
+        }
+
+
+    }
+
+    /*
+        TODO:
+        Implement move into the program
+    */
+
+    public void moveMode()
+    {
+        //Sets the movement of BC and AG modes - singleplayer
+        if((mode.equals("B") || mode.equals("A")) && !multi)
+        {
+            if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
+            {
+                dir = 8;
+            }
+            else if ((Mayflower.isKeyPressed(keys[1])) && !(dir == 8))
+            {
+                dir = 2;
+            }
+            else if ((Mayflower.isKeyPressed(keys[2])) && !(dir == 6))
+            {
+                dir = 4;
+            }
+            else if ((Mayflower.isKeyPressed(keys[3])) && !(dir == 4))
+            {
+                dir = 6;
+            }
+        }
+
+        //Sets the controls for BC and AG modes - multiplayer
+        if((mode.equals("B") || mode.equals("A")) && multi)
+        {
+            if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
+            {
+                dir = 8;
+            }
+            else if ((Mayflower.isKeyPressed(keys[1]) || Mayflower.isKeyPressed(keys[5])) && !(dir == 8))
+            {
+                dir = 2;
+            }
+            else if ((Mayflower.isKeyPressed(keys[2]) || Mayflower.isKeyPressed(keys[6])) && !(dir == 6))
+            {
+                dir = 4;
+            }
+            else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4))
+            {
+                dir = 6;
+            }
+        }
+
+        //Sets the movement of Twitch Play mode
+        if(mode.equals("T"))
+        {
+            //If there is one player...
+            if( Integer.parseInt( properties.getPlayers() ) == 1 )
+            {
+                if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
+                {
+                    dir = 8;
+                }
+                else if ((Mayflower.isKeyPressed(keys[1])) && !(dir == 8))
+                {
+                    dir = 2;
+                }
+                else if ((Mayflower.isKeyPressed(keys[2])) && !(dir == 6))
+                {
+                    dir = 4;
+                }
+                else if ((Mayflower.isKeyPressed(keys[3])) && !(dir == 4))
+                {
+                    dir = 6;
+                }
+
+            }
+
+            //If there are two players...
+            if( Integer.parseInt( properties.getPlayers() ) == 2 )
+            {
+                if ((Mayflower.isKeyPressed(keys[0]) &&
+                        Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
+                {
+                    dir = 8;
+                }
+                else if ((Mayflower.isKeyPressed(keys[1]) &&
+                        Mayflower.isKeyPressed(keys[5])) && !(dir == 8))
+                {
+                    dir = 2;
+                }
+                else if ((Mayflower.isKeyPressed(keys[2]) &&
+                        Mayflower.isKeyPressed(keys[6])) && !(dir == 6))
+                {
+                    dir = 4;
+                }
+                else if ((Mayflower.isKeyPressed(keys[3]) &&
+                        Mayflower.isKeyPressed(keys[7])) && !(dir == 4))
+                {
+                    dir = 6;
+                }
+
+            }
+
+            //If there are three players...
+            if( Integer.parseInt( properties.getPlayers() ) == 3 )
+            {
+                if ((Mayflower.isKeyPressed(keys[0]) &&
+                        Mayflower.isKeyPressed(keys[4]) &&
+                        Mayflower.isKeyPressed(keys[8])) && !(dir == 2))
+                {
+                    dir = 8;
+                }
+                else if ((Mayflower.isKeyPressed(keys[1]) &&
+                        Mayflower.isKeyPressed(keys[5]) &&
+                        Mayflower.isKeyPressed(keys[9])) && !(dir == 8))
+                {
+                    dir = 2;
+                }
+                else if ((Mayflower.isKeyPressed(keys[2]) &&
+                        Mayflower.isKeyPressed(keys[6]) &&
+                        Mayflower.isKeyPressed(keys[10])) && !(dir == 6))
+                {
+                    dir = 4;
+                }
+                else if ((Mayflower.isKeyPressed(keys[3]) &&
+                        Mayflower.isKeyPressed(keys[7]) &&
+                        Mayflower.isKeyPressed(keys[11])) && !(dir == 4))
+                {
+                    dir = 6;
+                }
+
+            }
+
+            //If there are four players...
+            if( Integer.parseInt( properties.getPlayers() ) == 4 )
+            {
+                if ((Mayflower.isKeyPressed(keys[0]) &&
+                        Mayflower.isKeyPressed(keys[4]) &&
+                        Mayflower.isKeyPressed(keys[8]) &&
+                        Mayflower.isKeyPressed(keys[12])) && !(dir == 2))
+                {
+                    dir = 8;
+                }
+                else if ((Mayflower.isKeyPressed(keys[1]) &&
+                        Mayflower.isKeyPressed(keys[5]) &&
+                        Mayflower.isKeyPressed(keys[9]) &&
+                        Mayflower.isKeyPressed(keys[13])) && !(dir == 8))
+                {
+                    dir = 2;
+                }
+                else if ((Mayflower.isKeyPressed(keys[2]) &&
+                        Mayflower.isKeyPressed(keys[6]) &&
+                        Mayflower.isKeyPressed(keys[10]) &&
+                        Mayflower.isKeyPressed(keys[14])) && !(dir == 6))
+                {
+                    dir = 4;
+                }
+                else if ((Mayflower.isKeyPressed(keys[3]) &&
+                        Mayflower.isKeyPressed(keys[7]) &&
+                        Mayflower.isKeyPressed(keys[11]) &&
+                        Mayflower.isKeyPressed(keys[15])) && !(dir == 4))
+                {
+                    dir = 6;
+                }
+
+            }
+        }
+
     }
 
     public boolean checkDead()
