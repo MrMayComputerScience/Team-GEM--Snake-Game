@@ -34,6 +34,8 @@ public class SnakeActor extends Actor implements Mover{
 
         canMove =false;
         multi = false;
+
+        /*
         keys = new int[8];
         keys[0] = Keyboard.KEY_W;
         keys[1] = Keyboard.KEY_S;
@@ -43,6 +45,9 @@ public class SnakeActor extends Actor implements Mover{
         keys[5] = Keyboard.KEY_DOWN;
         keys[6] = Keyboard.KEY_LEFT;
         keys[7] = Keyboard.KEY_RIGHT;
+        */
+        keyMode(1);
+
         setImage("img/snake.png");
         toMove = new Timer(75);
         size = 0;
@@ -67,6 +72,7 @@ public class SnakeActor extends Actor implements Mover{
         //Gets the mode
         mode = properties.getMode();
 
+        /*
         keys = new int[8];
         if(player==1)
         {
@@ -116,6 +122,9 @@ public class SnakeActor extends Actor implements Mover{
             keys[7] = Keyboard.KEY_H;
             Player = 4;
         }
+        */
+        keyMode(player);
+
         setImage("img/snake.png");
         toMove = new Timer(75);
         size = 0;
@@ -157,6 +166,7 @@ public class SnakeActor extends Actor implements Mover{
             SnakeBody snakeBody = new SnakeBody(size);
             //movement and directions
 
+            /*
             if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
             {
                 dir = 8;
@@ -173,6 +183,8 @@ public class SnakeActor extends Actor implements Mover{
             {
                 dir = 6;
             }
+            */
+            moveMode();
 
             if(canMove)
             {

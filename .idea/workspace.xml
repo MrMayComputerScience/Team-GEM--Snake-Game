@@ -10,10 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6fd2bb6-687a-4b4c-97fc-80c5b4c05814" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Eli.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Eli.xml" />
       <change beforePath="$PROJECT_DIR$/score.txt" afterPath="$PROJECT_DIR$/score.txt" />
       <change beforePath="$PROJECT_DIR$/src/SnakeActor.java" afterPath="$PROJECT_DIR$/src/SnakeActor.java" />
-      <change beforePath="$PROJECT_DIR$/src/SnakeWorld.java" afterPath="$PROJECT_DIR$/src/SnakeWorld.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,17 +115,17 @@
       <file leaf-file-name="SnakeActor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3487">
-              <caret line="334" column="24" lean-forward="false" selection-start-line="334" selection-start-column="24" selection-end-line="334" selection-end-column="24" />
+            <state relative-caret-position="44">
+              <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
               <folding>
-                <element signature="e#16976#16977#0" expanded="true" />
-                <element signature="e#17038#17039#0" expanded="true" />
-                <element signature="e#17662#17663#0" expanded="true" />
-                <element signature="e#17690#17691#0" expanded="true" />
-                <element signature="e#17896#17897#0" expanded="true" />
-                <element signature="e#17925#17926#0" expanded="true" />
-                <element signature="e#19459#19460#0" expanded="true" />
-                <element signature="e#19486#19487#0" expanded="true" />
+                <element signature="e#17122#17123#0" expanded="true" />
+                <element signature="e#17184#17185#0" expanded="true" />
+                <element signature="e#17808#17809#0" expanded="true" />
+                <element signature="e#17836#17837#0" expanded="true" />
+                <element signature="e#18042#18043#0" expanded="true" />
+                <element signature="e#18071#18072#0" expanded="true" />
+                <element signature="e#19605#19606#0" expanded="true" />
+                <element signature="e#19632#19633#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -603,7 +601,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SnakeActor.java</url>
-          <line>612</line>
+          <line>624</line>
           <properties />
           <option name="timeStamp" value="315" />
         </line-breakpoint>
@@ -676,14 +674,14 @@
         <state relative-caret-position="544">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="e#16976#16977#0" expanded="true" />
-            <element signature="e#17038#17039#0" expanded="true" />
-            <element signature="e#17662#17663#0" expanded="true" />
-            <element signature="e#17690#17691#0" expanded="true" />
-            <element signature="e#17896#17897#0" expanded="true" />
-            <element signature="e#17925#17926#0" expanded="true" />
-            <element signature="e#19459#19460#0" expanded="true" />
-            <element signature="e#19486#19487#0" expanded="true" />
+            <element signature="e#17122#17123#0" expanded="true" />
+            <element signature="e#17184#17185#0" expanded="true" />
+            <element signature="e#17808#17809#0" expanded="true" />
+            <element signature="e#17836#17837#0" expanded="true" />
+            <element signature="e#18042#18043#0" expanded="true" />
+            <element signature="e#18071#18072#0" expanded="true" />
+            <element signature="e#19605#19606#0" expanded="true" />
+            <element signature="e#19632#19633#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -715,14 +713,14 @@
         <state relative-caret-position="544">
           <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="e#16976#16977#0" expanded="true" />
-            <element signature="e#17038#17039#0" expanded="true" />
-            <element signature="e#17662#17663#0" expanded="true" />
-            <element signature="e#17690#17691#0" expanded="true" />
-            <element signature="e#17896#17897#0" expanded="true" />
-            <element signature="e#17925#17926#0" expanded="true" />
-            <element signature="e#19459#19460#0" expanded="true" />
-            <element signature="e#19486#19487#0" expanded="true" />
+            <element signature="e#17122#17123#0" expanded="true" />
+            <element signature="e#17184#17185#0" expanded="true" />
+            <element signature="e#17808#17809#0" expanded="true" />
+            <element signature="e#17836#17837#0" expanded="true" />
+            <element signature="e#18042#18043#0" expanded="true" />
+            <element signature="e#18071#18072#0" expanded="true" />
+            <element signature="e#19605#19606#0" expanded="true" />
+            <element signature="e#19632#19633#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -902,17 +900,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SnakeActor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3487">
-          <caret line="334" column="24" lean-forward="false" selection-start-line="334" selection-start-column="24" selection-end-line="334" selection-end-column="24" />
+        <state relative-caret-position="44">
+          <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
           <folding>
-            <element signature="e#16976#16977#0" expanded="true" />
-            <element signature="e#17038#17039#0" expanded="true" />
-            <element signature="e#17662#17663#0" expanded="true" />
-            <element signature="e#17690#17691#0" expanded="true" />
-            <element signature="e#17896#17897#0" expanded="true" />
-            <element signature="e#17925#17926#0" expanded="true" />
-            <element signature="e#19459#19460#0" expanded="true" />
-            <element signature="e#19486#19487#0" expanded="true" />
+            <element signature="e#17122#17123#0" expanded="true" />
+            <element signature="e#17184#17185#0" expanded="true" />
+            <element signature="e#17808#17809#0" expanded="true" />
+            <element signature="e#17836#17837#0" expanded="true" />
+            <element signature="e#18042#18043#0" expanded="true" />
+            <element signature="e#18071#18072#0" expanded="true" />
+            <element signature="e#19605#19606#0" expanded="true" />
+            <element signature="e#19632#19633#0" expanded="true" />
           </folding>
         </state>
       </provider>
