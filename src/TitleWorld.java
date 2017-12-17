@@ -2,6 +2,11 @@ import mayflower.*;
 
 public class TitleWorld extends World
 {
+    /*
+        TODO:
+        1. Add a "How to Play" page with controls and instructions
+    */
+
     public static String skin;
     public static MayflowerImage img;
     private Properties prop;

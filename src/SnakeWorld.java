@@ -157,13 +157,15 @@ public class SnakeWorld extends World {
                 addObject(list.get(x),760,560);
         }
     }
+
     public void add(Actor a,int x,int y)
     {
         addObject(a,x,y);
     }
+
     public void setCanMove()
     {
-        for(int i =0;i<4;i++)
+        for(int i = 0; i < 4; i++)
             if((snakes.get(0)).couldMove(i))
                 snakes.get(0).setCanMove(true);
     }
@@ -175,7 +177,7 @@ public class SnakeWorld extends World {
 
         if(!(obj.contains(point)))
         {
-            do {
+            do{
                 addObject(point,(int) (Math.floor(Math.random() * 38)+1)*20,(int) (Math.floor(Math.random() * 28)+1)*20);
             }while (point.istouching());
         }
@@ -184,7 +186,9 @@ public class SnakeWorld extends World {
 
         if(snakes.get(0).ready())
             snakes.get(0).setCanMove(true);
-        if(multiplayer&&!mode.equals("T")) {
+
+        if(multiplayer && !mode.equals("T"))
+        {
             Boolean done;
             Boolean ready=false;
             for (int i = 1;i<snakes.size();i++ )

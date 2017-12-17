@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class SnakeActor extends Actor implements Mover{
     private Timer toMove;
-    private LinkedList<SnakeBody> snakeBodies;
+    protected LinkedList<SnakeBody> snakeBodies;
     private int[] keys;
     private boolean multi;
     private int Player;
@@ -26,7 +26,7 @@ public class SnakeActor extends Actor implements Mover{
 
     private String mode;
     private Properties properties;
-    public SnakeActor(){}
+
     public SnakeActor(Properties p)
     {
         properties = p;
@@ -133,6 +133,7 @@ public class SnakeActor extends Actor implements Mover{
             return false;
         return true;
     }
+
     public void act()
     {
         int countResets = 0;
@@ -142,11 +143,14 @@ public class SnakeActor extends Actor implements Mover{
         }
         else
             setImage("img/snake.png");
-        //if(toMove.isDone())
-        //{
-            //System.out.println(System.currentTimeMillis() - testingTime);
-            //testingTime = System.currentTimeMillis();
-        //}
+
+        /*
+            if(toMove.isDone())
+            {
+                System.out.println(System.currentTimeMillis() - testingTime);
+                testingTime = System.currentTimeMillis();
+            }
+        */
             if(!multi)
                 if(checkDead())
                     dead();
@@ -163,29 +167,37 @@ public class SnakeActor extends Actor implements Mover{
                 dir = 6;
             }
 
-            if(canMove) {
-                if (dir == 8 && toMove.isDone()) {
+            if(canMove)
+            {
+                if (dir == 8 && toMove.isDone())
+                {
                     setLocation(getX(), getY() - 20);
                     add(snakeBody, getX(), getY() + 20);
                     snakeBodies.addLast(snakeBody);
                     mode();
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     testingTime = testingTime + 75;
-                } else if (dir == 2 && toMove.isDone()) {
+                }
+                else if (dir == 2 && toMove.isDone())
+                {
                     setLocation(getX(), getY() + 20);
                     add(snakeBody, getX(), getY() - 20);
                     snakeBodies.addLast(snakeBody);
                     mode();
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     testingTime = testingTime + 75;
-                } else if (dir == 4 && toMove.isDone()) {
+                }
+                else if (dir == 4 && toMove.isDone())
+                {
                     setLocation(getX() - 20, getY());
                     add(snakeBody, getX() + 20, getY());
                     snakeBodies.addLast(snakeBody);
                     mode();
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     testingTime = testingTime + 75;
-                } else if (dir == 6 && toMove.isDone()) {
+                }
+                else if (dir == 6 && toMove.isDone())
+                {
                     setLocation(getX() + 20, getY());
                     add(snakeBody, getX() - 20, getY());
                     snakeBodies.addLast(snakeBody);
@@ -195,6 +207,7 @@ public class SnakeActor extends Actor implements Mover{
                 }
             }
     }
+
     public void mode()
     {
         if(mode.equals("B"))
@@ -210,15 +223,75 @@ public class SnakeActor extends Actor implements Mover{
             }
             remove();
         }
+
         if(mode.equals("A"))
         {
 
         }
+
     }
+
+    public void moveMode(int player)
+    {
+        if(mode.equals("B") || mode.equals("A"))
+        {
+            keys = new int[8];
+            if(player==1)
+            {
+                keys[0] = Keyboard.KEY_W;
+                keys[1] = Keyboard.KEY_S;
+                keys[2] = Keyboard.KEY_A;
+                keys[3] = Keyboard.KEY_D;
+                keys[4] = Keyboard.KEY_W;
+                keys[5] = Keyboard.KEY_S;
+                keys[6] = Keyboard.KEY_A;
+                keys[7] = Keyboard.KEY_D;
+                Player = 1;
+            }
+            if(player==2)
+            {
+                keys[0] = Keyboard.KEY_UP;
+                keys[1] = Keyboard.KEY_DOWN;
+                keys[2] = Keyboard.KEY_LEFT;
+                keys[3] = Keyboard.KEY_RIGHT;
+                keys[4] = Keyboard.KEY_UP;
+                keys[5] = Keyboard.KEY_DOWN;
+                keys[6] = Keyboard.KEY_LEFT;
+                keys[7] = Keyboard.KEY_RIGHT;
+                Player = 2;
+            }
+            if(player==3)
+            {
+                keys[0] = Keyboard.KEY_I;
+                keys[1] = Keyboard.KEY_K;
+                keys[2] = Keyboard.KEY_J;
+                keys[3] = Keyboard.KEY_L;
+                keys[4] = Keyboard.KEY_I;
+                keys[5] = Keyboard.KEY_K;
+                keys[6] = Keyboard.KEY_J;
+                keys[7] = Keyboard.KEY_L;
+                Player = 3;
+            }
+            if(player==4)
+            {
+                keys[0] = Keyboard.KEY_T;
+                keys[1] = Keyboard.KEY_G;
+                keys[2] = Keyboard.KEY_F;
+                keys[3] = Keyboard.KEY_H;
+                keys[4] = Keyboard.KEY_T;
+                keys[5] = Keyboard.KEY_G;
+                keys[6] = Keyboard.KEY_F;
+                keys[7] = Keyboard.KEY_H;
+                Player = 4;
+            }
+        }
+    }
+
     public boolean checkDead()
     {
         return this.isTouching(SnakeActor.class)|| this.isTouching(SnakeBody.class) || this.isTouching(WallActor.class);
     }
+
     public void portal()
     {
         SnakeBody snakeBody = new SnakeBody(size);
@@ -241,7 +314,9 @@ public class SnakeActor extends Actor implements Mover{
             //snakeBodies.addLast(snakeBody);
         }
     }
-    public void setCanMove(boolean canMove) {
+
+    public void setCanMove(boolean canMove)
+    {
         this.canMove = canMove;
         testingTime = System.currentTimeMillis();
     }
@@ -251,31 +326,42 @@ public class SnakeActor extends Actor implements Mover{
         getWorld().addObject(actor,x,y);
         return true;
     }
-    public String getName(){return name = Mayflower.ask("Enter Your Name");}
+
+    public String getName()
+    {
+        return name = Mayflower.ask("Enter Your Name");
+    }
+
     public void remove()
     {
-        for(int x = 0;x<snakeBodies.size();x++)
+        for(int x = 0; x < snakeBodies.size(); x++)
         {
-            if (snakeBodies.get(x).getLife() <=0) {
+            if (snakeBodies.get(x).getLife() <= 0)
+            {
                 getWorld().removeObject(snakeBodies.get(x));
                 snakeBodies.remove(x);
             }
             else
+            {
                 snakeBodies.get(x).setLife(snakeBodies.get(x).getLife()-1);
+            }
         }
 
     }
+
     public void add()
     {
-        for(int x = 0;x<snakeBodies.size();x++)
+        for(int x = 0; x < snakeBodies.size(); x++)
         {
             snakeBodies.get(x).setLife(snakeBodies.get(x).getLife()+1);
         }
     }
+
     public int getPoints()
     {
         return score;
     }
+
     public void removeBody()
     {
         for(int i = 0;i<snakeBodies.size();i++)
@@ -283,49 +369,52 @@ public class SnakeActor extends Actor implements Mover{
             this.getWorld().removeObject(snakeBodies.get(i));
         }
     }
+
     public int getPlayer()
     {
         return Player;
     }
 
     public void dead()
-        {
+    {
 
-                int score = getPoints();
-                try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("score.txt", true), "utf-8")))
-                {
-                    System.out.println("The final score is " + score);
-                    writer.write( getName() + "-" + score);
-                    writer.write("\r\n");
+            int score = getPoints();
+            try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("score.txt", true), "utf-8")))
+            {
+                System.out.println("The final score is " + score);
+                writer.write( getName() + "-" + score);
+                writer.write("\r\n");
 
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                if(multi)
-                {
-                    this.removeTouching(SnakeActor.class);
-                    GameOver over = new GameOver(true,Player,properties);
-                    Mayflower.setWorld(over);
-                }
-                else
-                {
-                    this.removeTouching(SnakeActor.class);
-                    GameOver over = new GameOver(properties);
-                    Mayflower.setWorld(over);
-                }
-
-
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            if(multi)
+            {
+                this.removeTouching(SnakeActor.class);
+                GameOver over = new GameOver(true,Player,properties);
+                Mayflower.setWorld(over);
+            }
+            else
+            {
+                this.removeTouching(SnakeActor.class);
+                GameOver over = new GameOver(properties);
+                Mayflower.setWorld(over);
+            }
 
 
-        }
+
+
+    }
+
     public boolean isIntersecting()
     {
         if(this.isTouching(SnakeActor.class))
             return true;
         return false;
     }
+
     public List<Mover> isTouchingSA()
     {
         List ret = new ArrayList();
@@ -334,6 +423,7 @@ public class SnakeActor extends Actor implements Mover{
                 ret.add(this.getIntersectingObjects(Actor.class).get(i));
         return ret;
     }
+
     public boolean couldMove(int i)
     {
         return true;
