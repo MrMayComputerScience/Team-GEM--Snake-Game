@@ -95,7 +95,7 @@ public class TwitchSnake extends SnakeActor
         //System.out.println(System.currentTimeMillis() - testingTime);
         //testingTime = System.currentTimeMillis();
         //}
-        SnakeBody snakeBody = new SnakeBody(size);
+        SnakeBody snakeBody = new SnakeBody(properties, Player, size);
 
         //movement and directions
         if ((couldMove(0)) && !(dir == 2))

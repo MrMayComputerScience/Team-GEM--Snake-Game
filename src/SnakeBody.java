@@ -6,13 +6,17 @@ public class SnakeBody extends Actor
 {
     private int life;
     private Timer toMove;
-    public SnakeBody(int size)
+
+    private Properties properties;
+
+    public SnakeBody(Properties p, int pl, int size)
     {
+        properties = p;
         toMove = new Timer(75);
 
-
-            setImage("img/snake.png");
-            life = size;
+        String arr[] = properties.getSnakeThemes();
+        setImage( arr[pl - 1] );
+        life = size;
 
 
     }

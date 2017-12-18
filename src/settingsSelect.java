@@ -58,7 +58,7 @@ public class settingsSelect extends World
         }
         if(Mayflower.mouseClicked(ThemeS))
         {
-            settings.setSnakeTheme( Mayflower.ask("How do you want the snake(s) to look?") );
+            Mayflower.setWorld(new snakeSelect(settings));
         }
         if(Mayflower.mouseClicked(ThemeW))
         {

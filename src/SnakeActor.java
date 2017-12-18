@@ -1,7 +1,4 @@
-import mayflower.Actor;
-import mayflower.Keyboard;
-import mayflower.Mayflower;
-import mayflower.Timer;
+import mayflower.*;
 import org.lwjgl.Sys;
 
 import java.io.BufferedWriter;
@@ -15,7 +12,8 @@ import java.util.List;
 /**
  * Created by s581467 on 11/7/2017.
  */
-public class SnakeActor extends Actor implements Mover{
+public class SnakeActor extends Actor implements Mover
+{
     private Timer toMove;
     protected LinkedList<SnakeBody> snakeBodies;
     private int[] keys;
@@ -26,6 +24,7 @@ public class SnakeActor extends Actor implements Mover{
 
     private String mode;
     private Properties properties;
+    private MayflowerImage pic;
 
     public SnakeActor(Properties p)
     {
@@ -48,7 +47,10 @@ public class SnakeActor extends Actor implements Mover{
         */
         keyMode(1);
 
-        setImage("img/snake.png");
+        String arr[] = properties.getSnakeThemes();
+        pic = new MayflowerImage( arr[0] );
+        setImage( pic );
+
         toMove = new Timer(75);
         size = 0;
         snakeBodies = new LinkedList<>();
@@ -125,7 +127,10 @@ public class SnakeActor extends Actor implements Mover{
         */
         keyMode(player);
 
-        setImage("img/snake.png");
+        String arr[] = properties.getSnakeThemes();
+        pic = new MayflowerImage( arr[player - 1] );
+        setImage( pic );
+
         toMove = new Timer(75);
         size = 0;
         snakeBodies = new LinkedList<>();
@@ -151,7 +156,7 @@ public class SnakeActor extends Actor implements Mover{
             setImage("img/wall.png");
         }
         else
-            setImage("img/snake.png");
+            setImage( pic );
 
         /*
             if(toMove.isDone())
@@ -163,7 +168,7 @@ public class SnakeActor extends Actor implements Mover{
             if(!multi)
                 if(checkDead())
                     dead();
-            SnakeBody snakeBody = new SnakeBody(size);
+            SnakeBody snakeBody = new SnakeBody(properties, Player, size);
             //movement and directions
 
             /*
@@ -250,11 +255,6 @@ public class SnakeActor extends Actor implements Mover{
 
     }
 
-    /*
-        TODO:
-        Implement moveMode into the program
-    */
-
     public void keyMode(int player)
     {
         //Sets the controls for BC mode and AG mode - singleplayer
@@ -339,36 +339,10 @@ public class SnakeActor extends Actor implements Mover{
 
     }
 
-    /*
-        TODO:
-        Implement move into the program
-    */
-
     public void moveMode()
     {
         //Sets the movement of BC and AG modes - singleplayer
         if((mode.equals("B") || mode.equals("A")) && !multi)
-        {
-            if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
-            {
-                dir = 8;
-            }
-            else if ((Mayflower.isKeyPressed(keys[1])) && !(dir == 8))
-            {
-                dir = 2;
-            }
-            else if ((Mayflower.isKeyPressed(keys[2])) && !(dir == 6))
-            {
-                dir = 4;
-            }
-            else if ((Mayflower.isKeyPressed(keys[3])) && !(dir == 4))
-            {
-                dir = 6;
-            }
-        }
-
-        //Sets the controls for BC and AG modes - multiplayer
-        if((mode.equals("B") || mode.equals("A")) && multi)
         {
             if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
             {
@@ -383,6 +357,27 @@ public class SnakeActor extends Actor implements Mover{
                 dir = 4;
             }
             else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4))
+            {
+                dir = 6;
+            }
+        }
+
+        //Sets the controls for BC and AG modes - multiplayer
+        if((mode.equals("B") || mode.equals("A")) && multi)
+        {
+            if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
+            {
+                dir = 8;
+            }
+            else if ((Mayflower.isKeyPressed(keys[1])) && !(dir == 8))
+            {
+                dir = 2;
+            }
+            else if ((Mayflower.isKeyPressed(keys[2])) && !(dir == 6))
+            {
+                dir = 4;
+            }
+            else if ((Mayflower.isKeyPressed(keys[3])) && !(dir == 4))
             {
                 dir = 6;
             }
@@ -513,7 +508,7 @@ public class SnakeActor extends Actor implements Mover{
 
     public void portal()
     {
-        SnakeBody snakeBody = new SnakeBody(size);
+        SnakeBody snakeBody = new SnakeBody(properties, Player, size);
         if (dir == 8) {
             setLocation(getX(), getY() - 20);
             add(snakeBody, getX(), getY() + 20);

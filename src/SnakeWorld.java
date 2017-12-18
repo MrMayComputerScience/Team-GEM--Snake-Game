@@ -6,7 +6,8 @@ import java.util.*;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import mayflower.*;
 
-public class SnakeWorld extends World {
+public class SnakeWorld extends World
+{
     private Portal portal;
     private PointActor point;
     private Portal portal2;

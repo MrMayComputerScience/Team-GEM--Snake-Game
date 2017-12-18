@@ -3,7 +3,7 @@ public class Properties
 {
     private String players;
     private String mode;
-    private String themeS;
+    private String[] themeS;
     private String themeW;
     private String portals;
     private int winner;
@@ -11,13 +11,13 @@ public class Properties
     {
         players = "1";
         mode = "B";
-        themeS = "img/snake.png";
+        themeS = new String[]{"img/snake.png", "img/snake.png", "img/snake.png", "img/snake.png"};
         themeW = "img/wall.png";
         portals = "no";
         winner = 0;
     }
 
-    public Properties(String p, String m, String s, String w,String por)
+    public Properties(String p, String m, String[] s, String w,String por)
     {
         players = p;
         mode = m;
@@ -57,12 +57,12 @@ public class Properties
     }
 
     //For the snake in the Stage
-    public void setSnakeTheme(String tS)
+    public void setSnakeTheme(String tS, int p)
     {
-        themeS = tS;
+        themeS[p] = tS;
     }
 
-    public String getSnakeTheme()
+    public String[] getSnakeThemes()
     {
         return themeS;
     }
