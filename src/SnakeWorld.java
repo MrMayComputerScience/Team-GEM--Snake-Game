@@ -13,12 +13,14 @@ public class SnakeWorld extends World
     private Portal portal2;
     int[][] board = new int[40][30];
     private ArrayList<SnakeActor> snakes;
-    Boolean multiplayer;
+    private Boolean multiplayer;
     private Properties properties;
     private int players;
     private String mode;
+    private InputManager inputManager;
     public SnakeWorld(Properties p) {
         properties = p;
+
         int multi = Integer.parseInt(properties.getPlayers());
         multiplayer = multi > 1 ? true : false;
 
@@ -132,7 +134,7 @@ public class SnakeWorld extends World
         }
         if(mode.equals("T"))
         {
-            //snakes.add(new TwitchSnake(properties));
+
             snakes.add(new SnakeActor(properties));
         }
     }

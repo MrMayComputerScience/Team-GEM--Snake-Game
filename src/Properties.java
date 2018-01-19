@@ -81,7 +81,8 @@ public class Properties
     {
         return winner;
     }
-    public void setWinner(int i){
+    public void setWinner(int i)
+    {
         winner = i;
     }
 }

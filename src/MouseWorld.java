@@ -153,7 +153,16 @@ public class MouseWorld extends World {
             Boolean ready=false;
             for (int i = 0;i<snakes.size();i++ )
             {
+                if(snakes.get(i).getClass().equals(SnakeActor.class))
+                {
+                    if(snakes.get(i).isTouchingSA().size()>=0)
+                        for(Mover x:snakes.get(i).isTouchingSA())
+                        {
+                            snakes.remove(x);
+                            removeObject((Actor)x);
+                        }
 
+                }
                 if(snakes.get(i).isTouchingSA().size()>0)
                 {
                     for(int x = 0; x<snakes.get(i).isTouchingSA().size();x++)
@@ -173,6 +182,8 @@ public class MouseWorld extends World {
                 }
 
             }
+            if(snakes.size()==1)
+                Mayflower.setWorld(new GameOver(true,"Game Over",prop));
             ready=true;
             for(int i =1;i<snakes.size();i++)
             {
@@ -188,6 +199,23 @@ public class MouseWorld extends World {
                 }
             }
         }
+        boolean temp = false;
+        for(int i = 0;i<snakes.size();i++)
+        {
+            if(snakes.get(i).getClass().equals(MouseActor.class))
+            {
+                    continue;
+            }
+            else
+            {
+                temp = true;
+            }
+        }
+        if(!temp)
+            Mayflower.setWorld(new GameOver(true,"Game Over",prop));
+
     }
+
+
 
 }

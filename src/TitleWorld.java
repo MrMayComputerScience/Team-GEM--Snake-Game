@@ -24,8 +24,9 @@ public class TitleWorld extends World
 
         if(Mayflower.isKeyPressed(Keyboard.KEY_R))
         {
-            if(prop.getMode().equals("m"))
+            if(prop.getMode().equals("M"))
                 Mayflower.setWorld(new MouseWorld(0,prop));
+            else
             Mayflower.setWorld(new SnakeWorld(prop));
         }
 

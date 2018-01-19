@@ -21,7 +21,7 @@ public class SnakeActor extends Actor implements Mover
     private int Player;
     private boolean canMove;
     private long testingTime;
-
+    private long currentTime;
     private String mode;
     private Properties properties;
     private MayflowerImage pic;
@@ -68,63 +68,11 @@ public class SnakeActor extends Actor implements Mover
         mode = properties.getMode();
 
         //Gets the number of players, and thus the multiplayer boolean
-        int Player = player;
+        Player = player;
         multi = Integer.parseInt(properties.getPlayers()) > 1;
 
         //Gets the mode
         mode = properties.getMode();
-
-        /*
-        keys = new int[8];
-        if(player==1)
-        {
-            keys[0] = Keyboard.KEY_W;
-            keys[1] = Keyboard.KEY_S;
-            keys[2] = Keyboard.KEY_A;
-            keys[3] = Keyboard.KEY_D;
-            keys[4] = Keyboard.KEY_W;
-            keys[5] = Keyboard.KEY_S;
-            keys[6] = Keyboard.KEY_A;
-            keys[7] = Keyboard.KEY_D;
-            Player = 1;
-        }
-        if(player==2)
-        {
-            keys[0] = Keyboard.KEY_UP;
-            keys[1] = Keyboard.KEY_DOWN;
-            keys[2] = Keyboard.KEY_LEFT;
-            keys[3] = Keyboard.KEY_RIGHT;
-            keys[4] = Keyboard.KEY_UP;
-            keys[5] = Keyboard.KEY_DOWN;
-            keys[6] = Keyboard.KEY_LEFT;
-            keys[7] = Keyboard.KEY_RIGHT;
-            Player = 2;
-        }
-        if(player==3)
-        {
-            keys[0] = Keyboard.KEY_I;
-            keys[1] = Keyboard.KEY_K;
-            keys[2] = Keyboard.KEY_J;
-            keys[3] = Keyboard.KEY_L;
-            keys[4] = Keyboard.KEY_I;
-            keys[5] = Keyboard.KEY_K;
-            keys[6] = Keyboard.KEY_J;
-            keys[7] = Keyboard.KEY_L;
-            Player = 3;
-        }
-        if(player==4)
-        {
-            keys[0] = Keyboard.KEY_T;
-            keys[1] = Keyboard.KEY_G;
-            keys[2] = Keyboard.KEY_F;
-            keys[3] = Keyboard.KEY_H;
-            keys[4] = Keyboard.KEY_T;
-            keys[5] = Keyboard.KEY_G;
-            keys[6] = Keyboard.KEY_F;
-            keys[7] = Keyboard.KEY_H;
-            Player = 4;
-        }
-        */
         keyMode(player);
 
         String arr[] = properties.getSnakeThemes();
@@ -158,40 +106,13 @@ public class SnakeActor extends Actor implements Mover
         else
             setImage( pic );
 
-        /*
-            if(toMove.isDone())
-            {
-                System.out.println(System.currentTimeMillis() - testingTime);
-                testingTime = System.currentTimeMillis();
-            }
-        */
             if(!multi)
                 if(checkDead())
                     dead();
             SnakeBody snakeBody = new SnakeBody(properties, Player, size);
-            //movement and directions
-
-            /*
-            if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
-            {
-                dir = 8;
-            }
-            else if ((Mayflower.isKeyPressed(keys[1]) || Mayflower.isKeyPressed(keys[5])) && !(dir == 8))
-            {
-                dir = 2;
-            }
-            else if ((Mayflower.isKeyPressed(keys[2]) || Mayflower.isKeyPressed(keys[6])) && !(dir == 6))
-            {
-                dir = 4;
-            }
-            else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4))
-            {
-                dir = 6;
-            }
-            */
             moveMode();
 
-            if(canMove)
+            /*if(canMove)
             {
                 if (dir == 8 && toMove.isDone())
                 {
@@ -229,11 +150,73 @@ public class SnakeActor extends Actor implements Mover
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     testingTime = testingTime + 75;
                 }
-            }
+            }*/
     }
 
-    public void mode()
+    public void turnLeft()
     {
+            dir = 4;
+    }
+
+    public void turnRight()
+    {
+        dir=6;
+    }
+
+    public void turnDown()
+    {
+        dir = 2;
+    }
+
+    public void turnUp()
+    {
+        dir = 8;
+    }
+
+    public void tick()
+    {
+        if(dir==4)
+            setLocation(getX() - 20, getY());
+        else if(dir==6)
+            setLocation(getX() + 20, getY());
+        else if(dir==2)
+            setLocation(getX() , getY() + 20);
+        else if(dir==8)
+            setLocation(getX() , getY() - 20);
+    }
+
+    public void tickLeft()
+    {
+        setLocation(getX() - 20, getY());
+    }
+    public void tickRight()
+    {
+        setLocation(getX() + 20, getY());
+    }
+    public void tickDown()
+    {
+        setLocation(getX(), getY()+20);
+    }
+    public void tickUp()
+    {
+        setLocation(getX(), getY()-20);
+    }
+
+
+    /*public void mode()
+    {
+        if(mode.equals("M"))
+        {
+            remove();
+            if(currentTime==0)
+                currentTime = System.currentTimeMillis();
+            if(((-currentTime+System.currentTimeMillis())/1000 )>=5) {
+                size++;
+                add();
+                currentTime = System.currentTimeMillis();
+            }
+
+        }
         if(mode.equals("B") || mode.equals("T"))
         {
             if (this.isTouching(PointActor.class))
@@ -253,10 +236,23 @@ public class SnakeActor extends Actor implements Mover
 
         }
 
-    }
+    }*/
 
     public void keyMode(int player)
     {
+        if(mode.equals("M"))
+        {
+            keys = new int[8];
+            keys[0] = Keyboard.KEY_W;
+            keys[1] = Keyboard.KEY_S;
+            keys[2] = Keyboard.KEY_A;
+            keys[3] = Keyboard.KEY_D;
+            keys[4] = Keyboard.KEY_W;
+            keys[5] = Keyboard.KEY_S;
+            keys[6] = Keyboard.KEY_A;
+            keys[7] = Keyboard.KEY_D;
+
+        }
         //Sets the controls for BC mode and AG mode - singleplayer
         if((mode.equals("B") || mode.equals("A")) && !multi)
         {
@@ -363,7 +359,7 @@ public class SnakeActor extends Actor implements Mover
         }
 
         //Sets the controls for BC and AG modes - multiplayer
-        if((mode.equals("B") || mode.equals("A")) && multi)
+        if((mode.equals("B") || mode.equals("A")||mode.equals("M")) && multi)
         {
             if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
             {
@@ -382,7 +378,25 @@ public class SnakeActor extends Actor implements Mover
                 dir = 6;
             }
         }
-
+        if(mode.equals("M"))
+        {
+            if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
+            {
+                dir = 8;
+            }
+            else if ((Mayflower.isKeyPressed(keys[1])) && !(dir == 8))
+            {
+                dir = 2;
+            }
+            else if ((Mayflower.isKeyPressed(keys[2])) && !(dir == 6))
+            {
+                dir = 4;
+            }
+            else if ((Mayflower.isKeyPressed(keys[3])) && !(dir == 4))
+            {
+                dir = 6;
+            }
+        }
         //Sets the movement of Twitch Play mode
         if(mode.equals("T"))
         {
@@ -506,6 +520,11 @@ public class SnakeActor extends Actor implements Mover
         return this.isTouching(SnakeActor.class)|| this.isTouching(SnakeBody.class) || this.isTouching(WallActor.class);
     }
 
+    @Override
+    public void dead() {
+
+    }
+
     public void portal()
     {
         SnakeBody snakeBody = new SnakeBody(properties, Player, size);
@@ -563,6 +582,22 @@ public class SnakeActor extends Actor implements Mover
 
     }
 
+    public void removeLife()
+    {
+        for(int x = 0; x < snakeBodies.size(); x++)
+        {
+            {
+                snakeBodies.get(x).setLife(snakeBodies.get(x).getLife()-1);
+            }
+        }
+    }
+
+    public void removeBits(int x)
+    {
+        getWorld().removeObject(snakeBodies.get(x));
+        snakeBodies.remove(x);
+    }
+
     public void add()
     {
         for(int x = 0; x < snakeBodies.size(); x++)
@@ -589,7 +624,7 @@ public class SnakeActor extends Actor implements Mover
         return Player;
     }
 
-    public void dead()
+    /*public void dead()
     {
 
             int score = getPoints();
@@ -620,7 +655,48 @@ public class SnakeActor extends Actor implements Mover
 
 
 
+    }*/
+
+    public void deadSingle()
+    {
+        int score = getPoints();
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("score.txt", true), "utf-8")))
+        {
+            System.out.println("The final score is " + score);
+            writer.write( getName() + "-" + score);
+            writer.write("\r\n");
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        this.removeTouching(SnakeActor.class);
+        GameOver over = new GameOver(properties);
+        Mayflower.setWorld(over);
     }
+
+    public void deadMulti()
+    {
+        int score = getPoints();
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("score.txt", true), "utf-8")))
+        {
+            System.out.println("The final score is " + score);
+            writer.write( getName() + "-" + score);
+            writer.write("\r\n");
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        this.removeTouching(SnakeActor.class);
+        GameOver over = new GameOver(true,Player,properties);
+        Mayflower.setWorld(over);
+
+    }
+
 
     public boolean isIntersecting()
     {
