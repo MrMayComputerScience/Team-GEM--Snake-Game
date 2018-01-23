@@ -2,11 +2,6 @@ import mayflower.*;
 
 public class TitleWorld extends World
 {
-    /*
-        TODO:
-        1. Add a "How to Play" page with controls and instructions
-    */
-
     public static String skin;
     public static MayflowerImage img;
     private Properties prop;
@@ -24,11 +19,17 @@ public class TitleWorld extends World
 
         if(Mayflower.isKeyPressed(Keyboard.KEY_R))
         {
+<<<<<<< HEAD
             if(prop.getMode().equals("M"))
                 Mayflower.setWorld(new MouseWorld(0,prop));
             else
+=======
+            System.out.println("r");
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
             Mayflower.setWorld(new SnakeWorld(prop));
         }
+        if(Mayflower.isKeyPressed(Keyboard.KEY_M))
+            Mayflower.setWorld(new multiplayerSelect(prop));
 
         if(Mayflower.isKeyPressed(Keyboard.KEY_N))
             Mayflower.setWorld(new MMSelect(prop));

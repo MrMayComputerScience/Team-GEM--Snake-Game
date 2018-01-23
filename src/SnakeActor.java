@@ -1,4 +1,7 @@
-import mayflower.*;
+import mayflower.Actor;
+import mayflower.Keyboard;
+import mayflower.Mayflower;
+import mayflower.Timer;
 import org.lwjgl.Sys;
 
 import java.io.BufferedWriter;
@@ -12,10 +15,9 @@ import java.util.List;
 /**
  * Created by s581467 on 11/7/2017.
  */
-public class SnakeActor extends Actor implements Mover
-{
+public class SnakeActor extends Actor implements Mover{
     private Timer toMove;
-    protected LinkedList<SnakeBody> snakeBodies;
+    private LinkedList<SnakeBody> snakeBodies;
     private int[] keys;
     private boolean multi;
     private int Player;
@@ -24,8 +26,7 @@ public class SnakeActor extends Actor implements Mover
     private long currentTime;
     private String mode;
     private Properties properties;
-    private MayflowerImage pic;
-
+    public SnakeActor(){}
     public SnakeActor(Properties p)
     {
         properties = p;
@@ -33,8 +34,6 @@ public class SnakeActor extends Actor implements Mover
 
         canMove =false;
         multi = false;
-
-        /*
         keys = new int[8];
         keys[0] = Keyboard.KEY_W;
         keys[1] = Keyboard.KEY_S;
@@ -44,13 +43,7 @@ public class SnakeActor extends Actor implements Mover
         keys[5] = Keyboard.KEY_DOWN;
         keys[6] = Keyboard.KEY_LEFT;
         keys[7] = Keyboard.KEY_RIGHT;
-        */
-        keyMode(1);
-
-        String arr[] = properties.getSnakeThemes();
-        pic = new MayflowerImage( arr[0] );
-        setImage( pic );
-
+        setImage("img/snake.png");
         toMove = new Timer(75);
         size = 0;
         snakeBodies = new LinkedList<>();
@@ -74,7 +67,6 @@ public class SnakeActor extends Actor implements Mover
         //Gets the mode
         mode = properties.getMode();
 
-        /*
         keys = new int[8];
         if(player==1)
         {
@@ -124,13 +116,7 @@ public class SnakeActor extends Actor implements Mover
             keys[7] = Keyboard.KEY_H;
             Player = 4;
         }
-        */
-        keyMode(player);
-
-        String arr[] = properties.getSnakeThemes();
-        pic = new MayflowerImage( arr[player - 1] );
-        setImage( pic );
-
+        setImage("img/snake.png");
         toMove = new Timer(75);
         size = 0;
         snakeBodies = new LinkedList<>();
@@ -147,7 +133,6 @@ public class SnakeActor extends Actor implements Mover
             return false;
         return true;
     }
-
     public void act()
     {
         int countResets = 0;
@@ -156,72 +141,51 @@ public class SnakeActor extends Actor implements Mover
             setImage("img/wall.png");
         }
         else
-            setImage( pic );
-
-        /*
-            if(toMove.isDone())
-            {
-                System.out.println(System.currentTimeMillis() - testingTime);
-                testingTime = System.currentTimeMillis();
-            }
-        */
+            setImage("img/snake.png");
+        //if(toMove.isDone())
+        //{
+            //System.out.println(System.currentTimeMillis() - testingTime);
+            //testingTime = System.currentTimeMillis();
+        //}
             if(!multi)
                 if(checkDead())
                     dead();
-            SnakeBody snakeBody = new SnakeBody(properties, Player, size);
+            SnakeBody snakeBody = new SnakeBody(size);
             //movement and directions
 
-            /*
-            if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2))
-            {
+            if ((Mayflower.isKeyPressed(keys[0]) || Mayflower.isKeyPressed(keys[4])) && !(dir == 2)) {
                 dir = 8;
-            }
-            else if ((Mayflower.isKeyPressed(keys[1]) || Mayflower.isKeyPressed(keys[5])) && !(dir == 8))
-            {
+            } else if ((Mayflower.isKeyPressed(keys[1]) || Mayflower.isKeyPressed(keys[5])) && !(dir == 8)) {
                 dir = 2;
-            }
-            else if ((Mayflower.isKeyPressed(keys[2]) || Mayflower.isKeyPressed(keys[6])) && !(dir == 6))
-            {
+            } else if ((Mayflower.isKeyPressed(keys[2]) || Mayflower.isKeyPressed(keys[6])) && !(dir == 6)) {
                 dir = 4;
-            }
-            else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4))
-            {
+            } else if ((Mayflower.isKeyPressed(keys[3]) || Mayflower.isKeyPressed(keys[7])) && !(dir == 4)) {
                 dir = 6;
             }
-            */
-            moveMode();
 
-            if(canMove)
-            {
-                if (dir == 8 && toMove.isDone())
-                {
+            if(canMove) {
+                if (dir == 8 && toMove.isDone()) {
                     setLocation(getX(), getY() - 20);
                     add(snakeBody, getX(), getY() + 20);
                     snakeBodies.addLast(snakeBody);
                     mode();
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     testingTime = testingTime + 75;
-                }
-                else if (dir == 2 && toMove.isDone())
-                {
+                } else if (dir == 2 && toMove.isDone()) {
                     setLocation(getX(), getY() + 20);
                     add(snakeBody, getX(), getY() - 20);
                     snakeBodies.addLast(snakeBody);
                     mode();
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     testingTime = testingTime + 75;
-                }
-                else if (dir == 4 && toMove.isDone())
-                {
+                } else if (dir == 4 && toMove.isDone()) {
                     setLocation(getX() - 20, getY());
                     add(snakeBody, getX() + 20, getY());
                     snakeBodies.addLast(snakeBody);
                     mode();
                     toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
                     testingTime = testingTime + 75;
-                }
-                else if (dir == 6 && toMove.isDone())
-                {
+                } else if (dir == 6 && toMove.isDone()) {
                     setLocation(getX() + 20, getY());
                     add(snakeBody, getX() - 20, getY());
                     snakeBodies.addLast(snakeBody);
@@ -231,9 +195,9 @@ public class SnakeActor extends Actor implements Mover
                 }
             }
     }
-
     public void mode()
     {
+<<<<<<< HEAD
         if(mode.equals("M"))
         {
             remove();
@@ -247,6 +211,9 @@ public class SnakeActor extends Actor implements Mover
 
         }
         if(mode.equals("B") || mode.equals("T"))
+=======
+        if(mode.equals("B"))
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
         {
             if (this.isTouching(PointActor.class))
             {
@@ -259,11 +226,11 @@ public class SnakeActor extends Actor implements Mover
             }
             remove();
         }
-
         if(mode.equals("A"))
         {
 
         }
+<<<<<<< HEAD
 
     }
 
@@ -542,16 +509,16 @@ public class SnakeActor extends Actor implements Mover
             }
         }
 
+=======
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
     }
-
     public boolean checkDead()
     {
         return this.isTouching(SnakeActor.class)|| this.isTouching(SnakeBody.class) || this.isTouching(WallActor.class);
     }
-
     public void portal()
     {
-        SnakeBody snakeBody = new SnakeBody(properties, Player, size);
+        SnakeBody snakeBody = new SnakeBody(size);
         if (dir == 8) {
             setLocation(getX(), getY() - 20);
             add(snakeBody, getX(), getY() + 20);
@@ -571,9 +538,7 @@ public class SnakeActor extends Actor implements Mover
             //snakeBodies.addLast(snakeBody);
         }
     }
-
-    public void setCanMove(boolean canMove)
-    {
+    public void setCanMove(boolean canMove) {
         this.canMove = canMove;
         testingTime = System.currentTimeMillis();
     }
@@ -583,42 +548,31 @@ public class SnakeActor extends Actor implements Mover
         getWorld().addObject(actor,x,y);
         return true;
     }
-
-    public String getName()
-    {
-        return name = Mayflower.ask("Enter Your Name");
-    }
-
+    public String getName(){return name = Mayflower.ask("Enter Your Name");}
     public void remove()
     {
-        for(int x = 0; x < snakeBodies.size(); x++)
+        for(int x = 0;x<snakeBodies.size();x++)
         {
-            if (snakeBodies.get(x).getLife() <= 0)
-            {
+            if (snakeBodies.get(x).getLife() <=0) {
                 getWorld().removeObject(snakeBodies.get(x));
                 snakeBodies.remove(x);
             }
             else
-            {
                 snakeBodies.get(x).setLife(snakeBodies.get(x).getLife()-1);
-            }
         }
 
     }
-
     public void add()
     {
-        for(int x = 0; x < snakeBodies.size(); x++)
+        for(int x = 0;x<snakeBodies.size();x++)
         {
             snakeBodies.get(x).setLife(snakeBodies.get(x).getLife()+1);
         }
     }
-
     public int getPoints()
     {
         return score;
     }
-
     public void removeBody()
     {
         for(int i = 0;i<snakeBodies.size();i++)
@@ -626,52 +580,49 @@ public class SnakeActor extends Actor implements Mover
             this.getWorld().removeObject(snakeBodies.get(i));
         }
     }
-
     public int getPlayer()
     {
         return Player;
     }
 
     public void dead()
-    {
+        {
 
-            int score = getPoints();
-            try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("score.txt", true), "utf-8")))
-            {
-                System.out.println("The final score is " + score);
-                writer.write( getName() + "-" + score);
-                writer.write("\r\n");
+                int score = getPoints();
+                try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("score.txt", true), "utf-8")))
+                {
+                    System.out.println("The final score is " + score);
+                    writer.write( getName() + "-" + score);
+                    writer.write("\r\n");
 
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-            if(multi)
-            {
-                this.removeTouching(SnakeActor.class);
-                GameOver over = new GameOver(true,Player,properties);
-                Mayflower.setWorld(over);
-            }
-            else
-            {
-                this.removeTouching(SnakeActor.class);
-                GameOver over = new GameOver(properties);
-                Mayflower.setWorld(over);
-            }
-
-
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+                if(multi)
+                {
+                    this.removeTouching(SnakeActor.class);
+                    GameOver over = new GameOver(true,Player,properties);
+                    Mayflower.setWorld(over);
+                }
+                else
+                {
+                    this.removeTouching(SnakeActor.class);
+                    GameOver over = new GameOver(properties);
+                    Mayflower.setWorld(over);
+                }
 
 
-    }
 
+
+        }
     public boolean isIntersecting()
     {
         if(this.isTouching(SnakeActor.class))
             return true;
         return false;
     }
-
     public List<Mover> isTouchingSA()
     {
         List ret = new ArrayList();
@@ -679,10 +630,5 @@ public class SnakeActor extends Actor implements Mover
             if(this.getIntersectingObjects(Actor.class).getClass().equals(SnakeActor.class)||this.getIntersectingObjects(Actor.class).getClass().equals(MouseActor.class))
                 ret.add(this.getIntersectingObjects(Actor.class).get(i));
         return ret;
-    }
-
-    public boolean couldMove(int i)
-    {
-        return true;
     }
 }

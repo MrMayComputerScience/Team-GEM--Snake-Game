@@ -22,7 +22,6 @@ public class GameOver extends World
         if(multi)
             addObject(whoWins,300,100);
         properties = p;
-        properties.setWinner(player);
     }
     public GameOver(boolean multi,String message,Properties p)
     {
@@ -32,15 +31,13 @@ public class GameOver extends World
         Label whoWins = new Label(message);
         if(multi)
             addObject(whoWins,300,100);
-
         properties = p;
     }
     public void act()
     {
         if(Mayflower.isKeyPressed(Keyboard.KEY_R))
         {
-            if(properties.getMode().equals("M"))
-                Mayflower.setWorld(new MouseWorld(properties.getWinner(),properties));
+
             Mayflower.setWorld(new SnakeWorld(properties));
         }
         if(Mayflower.isKeyPressed(Keyboard.KEY_T)) {Mayflower.setWorld(new TitleWorld(properties)); }

@@ -9,6 +9,7 @@ public class StandardGameMode extends AbstractGameModeManager
     private Properties properties;
     private Portal portal;
     private Portal portal2;
+<<<<<<< HEAD
     private String[] Actions = {"LEFT","RIGHT","UP","DOWN"};
     private PointActor point;
     private ArrayList<SnakeActor> snakes;
@@ -17,6 +18,12 @@ public class StandardGameMode extends AbstractGameModeManager
     public StandardGameMode(Properties propertiesT)
     {
         snakes = new ArrayList<SnakeActor>();
+=======
+    private String[] Actions = {"left","right","up","down","tick","die","grow","collect","increaseScore","getScore","Teleport"};
+    private PointActor point;
+    public StandardGameMode(Properties propertiesT)
+    {
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
         properties = propertiesT;
         int players = Integer.parseInt(properties.getPlayers());
         setWorld(new SnakeWorld(properties));
@@ -39,6 +46,7 @@ public class StandardGameMode extends AbstractGameModeManager
         if(propertiesT.getPortals().equals("yes"))
             Portals();
         spawn((ArrayList)getSnakes());
+<<<<<<< HEAD
         point = new PointActor();
         getWorld().addObject(point,point.getRow()*20,point.getCol()*20);
         Mayflower.setWorld(getWorld());
@@ -46,10 +54,14 @@ public class StandardGameMode extends AbstractGameModeManager
         getWorld().addObject(inputManager,0,0);
         timerActor = new TimerActor(this);
         getWorld().addObject(timerActor,0,0);
+=======
+
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
     }
     @Override
     public void process(String action)
     {
+<<<<<<< HEAD
         boolean ready1=true;
         for(int i =1;i<snakes.size();i++)
         {
@@ -65,13 +77,19 @@ public class StandardGameMode extends AbstractGameModeManager
                 timerActor.instantiate();
             }
         }
+=======
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
         String[] actionT = action.split("_");
         if(actionT[0].equals("Tick"))
         {
             for(SnakeActor s:snakes)
             {
+<<<<<<< HEAD
                 s.tick();
                 s.collect();
+=======
+
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
             }
 
             List<Actor> obj = getWorld().getObjects();
@@ -90,7 +108,12 @@ public class StandardGameMode extends AbstractGameModeManager
 
             if(Integer.parseInt(properties.getPlayers())>1)
             {
+<<<<<<< HEAD
 
+=======
+                Boolean done;
+                Boolean ready=false;
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
                 for (int i = 1;i<snakes.size();i++ )
                 {
 
@@ -120,6 +143,7 @@ public class StandardGameMode extends AbstractGameModeManager
                 }
                 else if(snakes.size()==1)
                     Mayflower.setWorld(new GameOver(true,"You suck",properties));
+<<<<<<< HEAD
             }
             /*else
             {
@@ -134,10 +158,31 @@ public class StandardGameMode extends AbstractGameModeManager
         if(actionT[0].equals("P1"))
         {
 
+=======
+                ready=true;
+                for(int i =1;i<snakes.size();i++)
+                {
+                    if(snakes.get(i).ready())
+                        continue;
+                    ready=false;
+                }
+                if(ready)
+                {
+                    for(int i = 0; i<snakes.size();i++)
+                    {
+                        snakes.get(i).setCanMove(true);
+                    }
+                }
+            }
+        }
+        if(actionT[0].equals("P1"))
+        {
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
             for(int i = 0; i<Actions.length;i++)
             {
                 if(actionT[1].equals(Actions[i]))
                 {
+<<<<<<< HEAD
                     snakes.get(0).turnLeft();
                 }
                 if(actionT[1].equals(Actions[i]))
@@ -152,6 +197,51 @@ public class StandardGameMode extends AbstractGameModeManager
                 {
                     snakes.get(0).turnDown();
                 }
+=======
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+                if(actionT[1].equals(Actions[i]))
+                {
+                    snakes.get(1);
+                }
+
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
             }
         }
         else if(actionT[0].equals("P2"))
@@ -166,6 +256,7 @@ public class StandardGameMode extends AbstractGameModeManager
         {
 
         }
+<<<<<<< HEAD
         else
         {
 
@@ -177,6 +268,12 @@ public class StandardGameMode extends AbstractGameModeManager
             getWorld().addObject(snakes.get(0), 20, 20);
         else
         for(int x =0;x<snakes.size();x++)
+=======
+    }
+    public void spawn(ArrayList<SnakeActor> list)
+    {
+        for(int x =0;x<list.size();x++)
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
         {
             if(x==1)
                 getWorld().addObject(list.get(x),20,20);

@@ -1,7 +1,11 @@
 <component name="libraryTable">
   <library name="mayflower2.13">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://I:/STUDENTS/ComputerScience/mayflower2.13.jar!/" />
+=======
+      <root url="jar://$USER_HOME$/Desktop/mayflower2.13.jar!/" />
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
     </CLASSES>
     <JAVADOC />
     <SOURCES />

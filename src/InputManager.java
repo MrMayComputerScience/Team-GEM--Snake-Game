@@ -9,8 +9,16 @@ import java.util.Set;
 
 public class InputManager extends Actor
 {
+<<<<<<< HEAD
     private AbstractGameModeManager gameModeManager;
     private HashMap<Integer,String> map;
+=======
+    private Timer toMove;
+    private AbstractGameModeManager gameModeManager;
+    private HashMap<Integer,String> map;
+    private long testingTime;
+    private long currentTime;
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
 
     public InputManager(AbstractGameModeManager gameModeManager1)
     {
@@ -36,6 +44,12 @@ public class InputManager extends Actor
         map.put(Keyboard.KEY_G,"P4_DOWN");
         map.put(Keyboard.KEY_H,"P4_LEFT");
         map.put(Keyboard.KEY_F,"P4_RIGHT");
+<<<<<<< HEAD
+=======
+
+        toMove = new Timer(75);
+        testingTime = System.currentTimeMillis();
+>>>>>>> 8fae832e9e7d966f019aacf0f40882f3d8b1f326
     }
     @Override
     public void act()
