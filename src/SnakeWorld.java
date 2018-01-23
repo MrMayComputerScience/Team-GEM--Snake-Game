@@ -6,26 +6,23 @@ import java.util.*;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import mayflower.*;
 
-public class SnakeWorld extends World
-{
+public class SnakeWorld extends World {
     private Portal portal;
     private PointActor point;
     private Portal portal2;
     int[][] board = new int[40][30];
     private ArrayList<SnakeActor> snakes;
-    private Boolean multiplayer;
+    Boolean multiplayer;
     private Properties properties;
     private int players;
     private String mode;
-    private InputManager inputManager;
     public SnakeWorld(Properties p) {
         properties = p;
-
         int multi = Integer.parseInt(properties.getPlayers());
         multiplayer = multi > 1 ? true : false;
 
         //Checks the number of players
-        players = Integer.parseInt(properties.getPlayers());
+        int players = Integer.parseInt(properties.getPlayers());
 
         //Gets the mode to play on
         mode = properties.getMode();
@@ -87,8 +84,7 @@ public class SnakeWorld extends World
                 }
 
             }
-        }
-        else {
+        } else {
             board[1][1] = 1;
 
             board[5][5] = 3;
@@ -134,8 +130,7 @@ public class SnakeWorld extends World
         }
         if(mode.equals("T"))
         {
-
-            snakes.add(new SnakeActor(properties));
+            snakes.add(new TwitchSnake(properties));
         }
     }
 
@@ -161,27 +156,17 @@ public class SnakeWorld extends World
                 addObject(list.get(x),760,560);
         }
     }
-
     public void add(Actor a,int x,int y)
     {
         addObject(a,x,y);
     }
-
-    public void setCanMove()
-    {
-        for(int i = 0; i < 4; i++)
-            if((snakes.get(0)).couldMove(i))
-                snakes.get(0).setCanMove(true);
-    }
     public void act()
     {
-        if(mode.equals("T"))
-            setCanMove();
         List<Actor> obj = getObjects();
 
         if(!(obj.contains(point)))
         {
-            do{
+            do {
                 addObject(point,(int) (Math.floor(Math.random() * 38)+1)*20,(int) (Math.floor(Math.random() * 28)+1)*20);
             }while (point.istouching());
         }
@@ -190,9 +175,7 @@ public class SnakeWorld extends World
 
         if(snakes.get(0).ready())
             snakes.get(0).setCanMove(true);
-
-        if(multiplayer && !mode.equals("T"))
-        {
+        if(multiplayer&&!mode.equals("T")) {
             Boolean done;
             Boolean ready=false;
             for (int i = 1;i<snakes.size();i++ )

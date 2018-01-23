@@ -244,7 +244,8 @@ public class MouseActor extends Actor implements Mover
 
     public boolean collision()
     {
-
+        List temp = getObjectsAtOffset(-1,20,WallActor.class);
+        temp = getObjectsAtOffset(1,20,WallActor.class);
         if(dir == 8&&(getObjectsAtOffset(-1,-20,WallActor.class).size()==0||getObjectsAtOffset(1,-20,WallActor.class).size()==0))
             return true;
         if(dir == 2&&(getObjectsAtOffset(-1,20,WallActor.class).size()==0||getObjectsAtOffset(1,20,WallActor.class).size()==0))

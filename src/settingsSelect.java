@@ -43,22 +43,20 @@ public class settingsSelect extends World
             settings.setMode(Mayflower.ask("How do you want to play?" + "\n"
                     + "Enter \"B\" for Bit collect Mode" + "\n"
                     + "Enter \"A\" for Always Grow Mode" + "\n"
-                    + "Enter \"T\" for Twitch Mode" + "\n"
-                    + "Enter \"M\" for Mouse Mode"));
+                    + "Enter \"T\" for Twitch Mode"));
 
-            while( !settings.getMode().equals("B") && !settings.getMode().equals("A") && !settings.getMode().equals("T")&& !settings.getMode().equals("M"))
+            while( !settings.getMode().equals("B") && !settings.getMode().equals("A") && !settings.getMode().equals("T"))
             {
                 settings.setMode(Mayflower.ask("That is not a valid input. Try again." + "\n"
                         + "How do you want to play?" + "\n"
                         + "Enter \"B\" for Bit collect Mode" + "\n"
                         + "Enter \"A\" for Always Grow Mode" + "\n"
-                        + "Enter \"T\" for Twitch Mode" + "\n"
-                        + "Enter \"M\" for Mouse Mode"));
+                        + "Enter \"T\" for Twitch Mode"));
             }
         }
         if(Mayflower.mouseClicked(ThemeS))
         {
-            Mayflower.setWorld(new snakeSelect(settings));
+            settings.setSnakeTheme( Mayflower.ask("How do you want the snake(s) to look?") );
         }
         if(Mayflower.mouseClicked(ThemeW))
         {

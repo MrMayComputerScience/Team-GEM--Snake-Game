@@ -7,14 +7,7 @@ import java.util.Comparator;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class HighScore extends World
-{
-    /*
-        TODO:
-        1. Fix the Highscore system to include only the top seven scores
-        2. Optimize the data in score.txt to free up memory space for long term use
-    */
-
+public class HighScore extends World {
     private Properties properties;
     public HighScore(Properties p)
     {
@@ -31,10 +24,7 @@ public class HighScore extends World
             StringBuilder sb = new StringBuilder();
             while(in.hasNext())
             {
-                String next = in.next();
-                System.out.println(next);
-
-                scores.add(next);
+                scores.add(in.next());
             }
             in.close();
         } catch (FileNotFoundException e)
@@ -61,7 +51,6 @@ public class HighScore extends World
             y = y-40;
         }
     }
-
     @Override
     public void act()
     {
