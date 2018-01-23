@@ -53,10 +53,6 @@ public class InputManager extends Actor
                 gameModeManager.process(map.get(s));
             }
         }
-        if(toMove.isDone()) {
-            gameModeManager.process("Tick");
-            toMove.set((int) (System.currentTimeMillis() - testingTime) + 75);
-            testingTime = testingTime + 75;
-        }
+
     }
 }
