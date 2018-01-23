@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Updated Team-GEM--Snake-Game:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Updated_Team_GEM__Snake_Game_jar</output-path>
+    <root id="archive" name="Updated Team-GEM--Snake-Game.jar">
+      <element id="module-output" name="Updated Team-GEM--Snake-Game" />
+      <element id="extracted-dir" path="I:/STUDENTS/ComputerScience/mayflower2.13.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -21,7 +21,7 @@ public class SnakeActor extends Actor implements Mover
     private int Player;
     private boolean canMove;
     private long testingTime;
-
+    private long currentTime;
     private String mode;
     private Properties properties;
     private MayflowerImage pic;
@@ -68,7 +68,7 @@ public class SnakeActor extends Actor implements Mover
         mode = properties.getMode();
 
         //Gets the number of players, and thus the multiplayer boolean
-        int Player = player;
+        Player = player;
         multi = Integer.parseInt(properties.getPlayers()) > 1;
 
         //Gets the mode
@@ -234,6 +234,18 @@ public class SnakeActor extends Actor implements Mover
 
     public void mode()
     {
+        if(mode.equals("M"))
+        {
+            remove();
+            if(currentTime==0)
+                currentTime = System.currentTimeMillis();
+            if(((-currentTime+System.currentTimeMillis())/1000 )>=5) {
+                size++;
+                add();
+                currentTime = System.currentTimeMillis();
+            }
+
+        }
         if(mode.equals("B") || mode.equals("T"))
         {
             if (this.isTouching(PointActor.class))
@@ -257,6 +269,19 @@ public class SnakeActor extends Actor implements Mover
 
     public void keyMode(int player)
     {
+        if(mode.equals("M"))
+        {
+            keys = new int[8];
+            keys[0] = Keyboard.KEY_W;
+            keys[1] = Keyboard.KEY_S;
+            keys[2] = Keyboard.KEY_A;
+            keys[3] = Keyboard.KEY_D;
+            keys[4] = Keyboard.KEY_W;
+            keys[5] = Keyboard.KEY_S;
+            keys[6] = Keyboard.KEY_A;
+            keys[7] = Keyboard.KEY_D;
+
+        }
         //Sets the controls for BC mode and AG mode - singleplayer
         if((mode.equals("B") || mode.equals("A")) && !multi)
         {
@@ -363,7 +388,7 @@ public class SnakeActor extends Actor implements Mover
         }
 
         //Sets the controls for BC and AG modes - multiplayer
-        if((mode.equals("B") || mode.equals("A")) && multi)
+        if((mode.equals("B") || mode.equals("A")||mode.equals("M")) && multi)
         {
             if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
             {
@@ -382,7 +407,25 @@ public class SnakeActor extends Actor implements Mover
                 dir = 6;
             }
         }
-
+        if(mode.equals("M"))
+        {
+            if ((Mayflower.isKeyPressed(keys[0])) && !(dir == 2))
+            {
+                dir = 8;
+            }
+            else if ((Mayflower.isKeyPressed(keys[1])) && !(dir == 8))
+            {
+                dir = 2;
+            }
+            else if ((Mayflower.isKeyPressed(keys[2])) && !(dir == 6))
+            {
+                dir = 4;
+            }
+            else if ((Mayflower.isKeyPressed(keys[3])) && !(dir == 4))
+            {
+                dir = 6;
+            }
+        }
         //Sets the movement of Twitch Play mode
         if(mode.equals("T"))
         {
